@@ -5,6 +5,8 @@
  */
 package tani.go;
 
+import controller.c_menu;
+
 /**
  *
  * @author Deddy
@@ -15,7 +17,7 @@ public class TaniGo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Awal().setVisible(true);
+        new c_menu(new Awal());
     }
     
 }

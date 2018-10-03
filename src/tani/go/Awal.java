@@ -5,6 +5,11 @@
  */
 package tani.go;
 
+import java.awt.CardLayout;
+import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Deddy
@@ -15,8 +20,28 @@ public class Awal extends javax.swing.JFrame {
      * Creates new form Awal
      */
     public Awal() {
+        this.setUndecorated(true);
+        this.setAlwaysOnTop(true);
+        this.setResizable(false);
         initComponents();
+        this.setSize(1280, 700);
+        window.setSize(1280, 700);
+
+        window.add("tentang", tentang);
+        window.add("main_menu", main_menu);
+
     }
+
+    public JButton b_tentang() {
+        return b_tentang;
+    }
+
+    public void pindah(String kunci) {
+        CardLayout cl = (CardLayout) (window.getLayout());
+        cl.show(window, kunci);
+    }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,45 +52,56 @@ public class Awal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        b_tentang = new javax.swing.JButton();
+        b_keluar = new javax.swing.JButton();
+        window = new javax.swing.JPanel();
+        tentang = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        main_menu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 320, 80));
+        b_tentang.setBorderPainted(false);
+        b_tentang.setContentAreaFilled(false);
+        getContentPane().add(b_tentang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 320, 80));
 
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        b_keluar.setBorderPainted(false);
+        b_keluar.setContentAreaFilled(false);
+        b_keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                b_keluarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 320, 80));
+        getContentPane().add(b_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 320, 80));
+
+        window.setLayout(new java.awt.CardLayout());
+
+        tentang.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/tentang/tentang.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        tentang.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        window.add(tentang, "card2");
+
+        main_menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/menu/menucontoh.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        main_menu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        window.add(main_menu, "card3");
+
+        getContentPane().add(window, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new tentang().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       new popup().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void b_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_keluarActionPerformed
+        new popup().setVisible(true);
+    }//GEN-LAST:event_b_keluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,8 +139,12 @@ public class Awal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton b_keluar;
+    private javax.swing.JButton b_tentang;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel main_menu;
+    private javax.swing.JPanel tentang;
+    private javax.swing.JPanel window;
     // End of variables declaration//GEN-END:variables
 }
