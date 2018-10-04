@@ -35,6 +35,14 @@ public class Awal extends javax.swing.JFrame {
     public JButton b_tentang() {
         return b_tentang;
     }
+    
+    public JButton b_kembten(){
+        return b_kembten;
+    }
+    
+    public JButton b_keluar(){
+        return b_keluar;
+    }
 
     public void pindah(String kunci) {
         CardLayout cl = (CardLayout) (window.getLayout());
@@ -52,35 +60,29 @@ public class Awal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        b_tentang = new javax.swing.JButton();
-        b_keluar = new javax.swing.JButton();
         window = new javax.swing.JPanel();
         tentang = new javax.swing.JPanel();
+        b_kembten = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         main_menu = new javax.swing.JPanel();
+        b_tentang = new javax.swing.JButton();
+        b_keluar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        b_tentang.setBorderPainted(false);
-        b_tentang.setContentAreaFilled(false);
-        getContentPane().add(b_tentang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 320, 80));
-
-        b_keluar.setBorderPainted(false);
-        b_keluar.setContentAreaFilled(false);
-        b_keluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_keluarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(b_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 320, 80));
-
         window.setLayout(new java.awt.CardLayout());
 
         tentang.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/tentang/tentang.png"))); // NOI18N
+        b_kembten.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_tentang/back.png"))); // NOI18N
+        b_kembten.setBorder(null);
+        b_kembten.setBorderPainted(false);
+        b_kembten.setContentAreaFilled(false);
+        tentang.add(b_kembten, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 120, 70));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_tentang/tentang1.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         tentang.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -88,7 +90,17 @@ public class Awal extends javax.swing.JFrame {
 
         main_menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/menu/menucontoh.png"))); // NOI18N
+        b_tentang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/tentang.png"))); // NOI18N
+        b_tentang.setBorderPainted(false);
+        b_tentang.setContentAreaFilled(false);
+        main_menu.add(b_tentang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 320, 80));
+
+        b_keluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/keluar.png"))); // NOI18N
+        b_keluar.setBorderPainted(false);
+        b_keluar.setContentAreaFilled(false);
+        main_menu.add(b_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 320, 80));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/menu.png"))); // NOI18N
         main_menu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         window.add(main_menu, "card3");
@@ -98,10 +110,6 @@ public class Awal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void b_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_keluarActionPerformed
-        new popup().setVisible(true);
-    }//GEN-LAST:event_b_keluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,6 +148,7 @@ public class Awal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_keluar;
+    private javax.swing.JButton b_kembten;
     private javax.swing.JButton b_tentang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
