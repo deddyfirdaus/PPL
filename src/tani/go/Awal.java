@@ -6,6 +6,7 @@
 package tani.go;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ public class Awal extends javax.swing.JFrame {
      */
     public Awal() {
         this.setUndecorated(true);
-        this.setAlwaysOnTop(true);
+        this.setAlwaysOnTop(false);
         this.setResizable(false);
         initComponents();
         this.setSize(1280, 700);
@@ -35,21 +36,27 @@ public class Awal extends javax.swing.JFrame {
     public JButton b_tentang() {
         return b_tentang;
     }
-    
-    public JButton b_kembten(){
+
+    public JButton b_kembten() {
         return b_kembten;
     }
-    
-    public JButton b_keluar(){
+
+    public JButton b_keluar() {
         return b_keluar;
     }
-
+    
+    public JButton b_mulai(){
+        return b_mulai;
+    }
+    
+    public JButton b_bantuan(){
+        return b_bantuan;
+    }
+    
     public void pindah(String kunci) {
         CardLayout cl = (CardLayout) (window.getLayout());
         cl.show(window, kunci);
     }
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +72,8 @@ public class Awal extends javax.swing.JFrame {
         b_kembten = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         main_menu = new javax.swing.JPanel();
+        b_mulai = new javax.swing.JButton();
+        b_bantuan = new javax.swing.JButton();
         b_tentang = new javax.swing.JButton();
         b_keluar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -90,15 +99,25 @@ public class Awal extends javax.swing.JFrame {
 
         main_menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        b_mulai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/mulai.png"))); // NOI18N
+        b_mulai.setBorderPainted(false);
+        b_mulai.setContentAreaFilled(false);
+        main_menu.add(b_mulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 320, 80));
+
+        b_bantuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/bantuan.png"))); // NOI18N
+        b_bantuan.setBorderPainted(false);
+        b_bantuan.setContentAreaFilled(false);
+        main_menu.add(b_bantuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 320, 80));
+
         b_tentang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/tentang.png"))); // NOI18N
         b_tentang.setBorderPainted(false);
         b_tentang.setContentAreaFilled(false);
-        main_menu.add(b_tentang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 320, 80));
+        main_menu.add(b_tentang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 320, 80));
 
         b_keluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/keluar.png"))); // NOI18N
         b_keluar.setBorderPainted(false);
         b_keluar.setContentAreaFilled(false);
-        main_menu.add(b_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 320, 80));
+        main_menu.add(b_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 320, 80));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarmenu/menu.png"))); // NOI18N
         main_menu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -147,8 +166,10 @@ public class Awal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton b_bantuan;
     private javax.swing.JButton b_keluar;
     private javax.swing.JButton b_kembten;
+    private javax.swing.JButton b_mulai;
     private javax.swing.JButton b_tentang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

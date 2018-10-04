@@ -5,6 +5,10 @@
  */
 package tani.go;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JButton;
+
 /**
  *
  * @author User
@@ -18,6 +22,14 @@ public class exit extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton b_ya(){
+        return b_ya;
+    }
+    
+    public JButton b_tidak(){
+        return b_tidak;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,20 +39,38 @@ public class exit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        b_ya = new javax.swing.JButton();
+        b_tidak = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        b_ya.setText("Ya");
+
+        b_tidak.setText("Tidak");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(b_ya)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addComponent(b_tidak)
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(178, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(b_ya)
+                    .addComponent(b_tidak))
+                .addGap(99, 99, 99))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,5 +109,7 @@ public class exit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton b_tidak;
+    private javax.swing.JButton b_ya;
     // End of variables declaration//GEN-END:variables
 }
