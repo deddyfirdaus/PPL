@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import tani.go.Awal;
 import tani.go.exit;
+import tani.go.framepilih;
 
 /**
  *
@@ -22,6 +23,7 @@ public class c_menu {
 
     private Awal main_menu = new Awal();
     private exit exit = new exit();
+    private framepilih frap = new framepilih();
 
     public c_menu(Awal mm) {
         main_menu = mm;
@@ -40,8 +42,16 @@ public class c_menu {
         exit = ext;
         exit.setVisible(true);
 
-        exit.b_ya().addActionListener(new klikYa());
-        exit.b_tidak().addActionListener(new klikTidak());
+        exit.b_ya().addMouseListener(new klikYa());
+        exit.b_tidak().addMouseListener(new klikTidak());
+    }
+
+    public c_menu(framepilih fp) {
+        frap = fp;
+        frap.setVisible(true);
+        
+        frap.b_mulaibaru().addMouseListener(new klikMulaibaru());
+        frap.b_lanjut().addMouseListener(new klikLanjut());
     }
 
     public void ubahIcon(JButton tombol, String src) {
@@ -80,10 +90,12 @@ public class c_menu {
     private class klikMulai implements MouseListener {
 
         public klikMulai() {
+
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            new c_menu(frap);
         }
 
         @Override
@@ -104,27 +116,128 @@ public class c_menu {
             ubahIcon(main_menu.b_mulai(), "/gambarmenu/mulai.png");
         }
     }
-
-    private class klikTidak implements ActionListener {
+    private class klikTidak implements MouseListener {
 
         public klikTidak() {
         }
 
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            exit.setVisible(false);
+//        }
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void mouseClicked(MouseEvent e) {
             exit.setVisible(false);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            ubahIcon(exit.b_tidak(), "/gambar_exit/tidak1.png");
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            ubahIcon(exit.b_tidak(), "/gambar_exit/tidak.png");
         }
     }
 
-    private class klikYa implements ActionListener {
+    private class klikLanjut implements MouseListener {
+
+        public klikLanjut() {
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            ubahIcon(frap.b_lanjut(), "/gambarplay/continue.png");
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            ubahIcon(frap.b_lanjut(), "/gambarplay/continue1.png");
+        }
+    }
+    private class klikMulaibaru implements MouseListener {
+
+        public klikMulaibaru() {
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            ubahIcon(frap.b_mulaibaru(), "/gambarplay/new game.png");
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            ubahIcon(frap.b_mulaibaru(), "/gambarplay/new game1.png");
+        }
+    }
+
+    private class klikYa implements MouseListener {
 
         public klikYa() {
         }
 
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            System.exit(0);
+//        }
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void mouseClicked(MouseEvent e) {
             System.exit(0);
         }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            ubahIcon(exit.b_ya(), "/gambar_exit/ya1.png");
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            ubahIcon(exit.b_ya(), "/gambar_exit/ya.png");
+        }
+
     }
 
     private class klikKeluar implements MouseListener {
@@ -147,12 +260,12 @@ public class c_menu {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-             ubahIcon(main_menu.b_keluar(), "/gambarmenu/keluar1.png");
+            ubahIcon(main_menu.b_keluar(), "/gambarmenu/keluar1.png");
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-             ubahIcon(main_menu.b_keluar(), "/gambarmenu/keluar.png");
+            ubahIcon(main_menu.b_keluar(), "/gambarmenu/keluar.png");
         }
 
     }
@@ -177,12 +290,12 @@ public class c_menu {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-             ubahIcon(main_menu.b_kembten(), "/gambar_tentang/back1.png");
+            ubahIcon(main_menu.b_kembten(), "/gambar_tentang/back1.png");
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-          ubahIcon(main_menu.b_kembten(), "/gambar_tentang/back.png");
+            ubahIcon(main_menu.b_kembten(), "/gambar_tentang/back.png");
         }
     }
 
@@ -212,7 +325,7 @@ public class c_menu {
 
         @Override
         public void mouseExited(MouseEvent e) {
-           ubahIcon(main_menu.b_tentang(), "/gambarmenu/tentang.png");
+            ubahIcon(main_menu.b_tentang(), "/gambarmenu/tentang.png");
         }
     }
 

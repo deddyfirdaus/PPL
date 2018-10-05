@@ -5,35 +5,34 @@
  */
 package tani.go;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import javax.swing.JButton;
 
 /**
  *
- * @author User
+ * @author Deddy
  */
-public class exit extends javax.swing.JFrame {
+public class framepilih extends javax.swing.JFrame {
 
     /**
-     * Creates new form exit
+     * Creates new form framepilih
      */
-    public exit() {
+    public framepilih() {
         this.setUndecorated(true);
         this.setAlwaysOnTop(false);
         this.setResizable(false);
         initComponents();
-        this.setSize(720, 190);
+        setLocationRelativeTo(this);
+        this.setSize(370, 190);
     }
 
-    public JButton b_ya(){
-        return b_ya;
+    public JButton b_mulaibaru() {
+        return b_mulaibaru;
     }
-    
-    public JButton b_tidak(){
-        return b_tidak;
+
+    public JButton b_lanjut() {
+        return b_lanjut;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,36 +42,27 @@ public class exit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        b_ya = new javax.swing.JButton();
-        b_tidak = new javax.swing.JButton();
+        b_mulaibaru = new javax.swing.JButton();
+        b_lanjut = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        b_ya.setBorderPainted(false);
-        b_ya.setContentAreaFilled(false);
-        getContentPane().add(b_ya, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 50, 40));
+        b_mulaibaru.setBorderPainted(false);
+        b_mulaibaru.setContentAreaFilled(false);
+        getContentPane().add(b_mulaibaru, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 210, 50));
 
-        b_tidak.setBorderPainted(false);
-        b_tidak.setContentAreaFilled(false);
-        b_tidak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_tidakActionPerformed(evt);
-            }
-        });
-        getContentPane().add(b_tidak, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 100, 50));
+        b_lanjut.setToolTipText("");
+        b_lanjut.setBorderPainted(false);
+        b_lanjut.setContentAreaFilled(false);
+        getContentPane().add(b_lanjut, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 140, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_exit/popupexit.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarplay/play.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void b_tidakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_tidakActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_tidakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,27 +81,27 @@ public class exit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(exit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(framepilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(exit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(framepilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(exit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(framepilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(exit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(framepilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new exit().setVisible(true);
+                new framepilih().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton b_tidak;
-    private javax.swing.JButton b_ya;
+    private javax.swing.JButton b_lanjut;
+    private javax.swing.JButton b_mulaibaru;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
