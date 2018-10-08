@@ -9,9 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.m_akun;
 import tani.go.Awal;
+import tani.go.createname;
 import tani.go.exit;
 import tani.go.framepilih;
 
@@ -24,6 +31,9 @@ public class c_menu {
     private Awal main_menu = new Awal();
     private exit exit = new exit();
     private framepilih frap = new framepilih();
+    private createname cn = new createname();
+    private m_akun mA ;
+    private JFrame frame;
 
     public c_menu(Awal mm) {
         main_menu = mm;
@@ -53,6 +63,29 @@ public class c_menu {
         frap.b_mulaibaru().addMouseListener(new klikMulaibaru());
         frap.b_lanjut().addMouseListener(new klikLanjut());
     }
+    
+    public c_menu (createname name) throws SQLException{
+        cn = name;
+        mA = new m_akun();
+        cn.setVisible(true);
+        
+        cn.getOK().addActionListener(new OkListener());
+    }
+    
+    private class OkListener implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    mA.simpan("NULL, '"+ cn.getNama()+"'");
+//                System.out.println(vD.getUsername());
+                   
+                    JOptionPane.showMessageDialog(frame, "data berhasil disimpan");
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
 
     public void ubahIcon(JButton tombol, String src) {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
@@ -184,7 +217,11 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            
+            try {
+                new c_menu(cn);
+            } catch (SQLException ex) {
+                Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         @Override
