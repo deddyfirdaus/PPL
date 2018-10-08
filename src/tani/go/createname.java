@@ -17,8 +17,12 @@ public class createname extends javax.swing.JFrame {
      * Creates new form createname
      */
     public createname() {
+       this.setUndecorated(true);
+        this.setAlwaysOnTop(false);
+        this.setResizable(false);
         initComponents();
         setLocationRelativeTo(this);
+        this.setSize(370, 190);
     }
    public String getNama() {
         return nama.getText();
@@ -37,45 +41,32 @@ public class createname extends javax.swing.JFrame {
     private void initComponents() {
 
         nama = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         b_ok = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        nama.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nama.setBorder(null);
         nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaActionPerformed(evt);
             }
         });
+        getContentPane().add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 250, 60));
 
-        jLabel1.setText("Masukkan Nama");
+        b_ok.setBorderPainted(false);
+        b_ok.setContentAreaFilled(false);
+        b_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_okActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 123, 60, 40));
 
-        b_ok.setText("Ok");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(b_ok)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nama)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
-                .addContainerGap(130, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(44, 44, 44)
-                .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(b_ok)
-                .addGap(93, 93, 93))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarplay/nama.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,6 +74,10 @@ public class createname extends javax.swing.JFrame {
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaActionPerformed
+
+    private void b_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_okActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_okActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +116,7 @@ public class createname extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_ok;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField nama;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,6 +34,7 @@ public class c_menu {
     private createname cn = new createname();
     private m_akun mA ;
     private JFrame frame;
+//    private static String namaa;
 
     public c_menu(Awal mm) {
         main_menu = mm;
@@ -47,6 +48,13 @@ public class c_menu {
         main_menu.b_mulai().addMouseListener(new klikMulai());
         main_menu.b_bantuan().addMouseListener(new klikBantuan());
     }
+//        public static void setUser(String nama) {
+//        c_menu.namaa = nama;
+//    }
+//
+//    public static String getUser() {
+//        return namaa;
+//    }
 
     public c_menu(exit ext) {
         exit = ext;
@@ -68,7 +76,7 @@ public class c_menu {
         cn = name;
         mA = new m_akun();
         cn.setVisible(true);
-        
+   
         cn.getOK().addActionListener(new OkListener());
     }
     
@@ -78,12 +86,11 @@ public class c_menu {
             public void actionPerformed(ActionEvent e) {
                 try {
                     mA.simpan("NULL, '"+ cn.getNama()+"'");
-//                System.out.println(vD.getUsername());
                    
-                    JOptionPane.showMessageDialog(frame, "data berhasil disimpan");
                 } catch (SQLException ex) {
                     Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                new c_lahan();
             }
         }
 
@@ -217,6 +224,7 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            frap.dispose();
             try {
                 new c_menu(cn);
             } catch (SQLException ex) {
