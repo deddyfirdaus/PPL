@@ -10,32 +10,27 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Deddy
  */
 public class koneksidb {
-     private static Connection koneksi;
-    private Statement stm;
+    private Connection koneksi;
+    String url = "jdbc:mysql://localhost:3306/tanigo";
+    String username = "root";
+    String password = "";
     
-    public koneksidb(String username, String password, String database) throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/" + database;
-        koneksi = DriverManager.getConnection(url, username, password);
-        stm = koneksi.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+    public Connection koneksidb() {
+        try {
+            koneksi = DriverManager.getConnection(url, username, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(koneksidb.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        return koneksi;
     }
     
-    public ResultSet getResult(String sql) throws SQLException {
-        return stm.executeQuery(sql);
-
-    }
-
-    public void execute(String sql) throws SQLException {
-        this.stm.executeUpdate(sql);
-    }
-
-    public koneksidb Koneksi() {
-        return (koneksidb) koneksi;
-    }
 }

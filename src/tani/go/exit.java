@@ -20,7 +20,7 @@ public class exit extends javax.swing.JFrame {
      */
     public exit() {
         this.setUndecorated(true);
-        this.setAlwaysOnTop(false);
+        this.setAlwaysOnTop(true);
         this.setResizable(false);
         initComponents();
         this.setSize(720, 190);

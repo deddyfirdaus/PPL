@@ -5,7 +5,9 @@
  */
 package tani.go;
 
+import controller.c_lahan;
 import controller.c_menu;
+import model.m_akun;
 
 /**
  *
@@ -17,7 +19,8 @@ public class TaniGo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new c_menu(new Awal());
+//        new c_menu(new Awal());
+        new c_lahan(new lahan(), new m_akun(), "ree");
     }
     
 }

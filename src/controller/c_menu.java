@@ -21,6 +21,7 @@ import tani.go.Awal;
 import tani.go.createname;
 import tani.go.exit;
 import tani.go.framepilih;
+import tani.go.lahan;
 
 /**
  *
@@ -28,15 +29,18 @@ import tani.go.framepilih;
  */
 public class c_menu {
 
-    private Awal main_menu = new Awal();
-    private exit exit = new exit();
-    private framepilih frap = new framepilih();
-    private createname cn = new createname();
-    private m_akun mA ;
-    private JFrame frame;
+    protected Awal main_menu;
+    private exit exit;
+    private framepilih frap;
+    private createname cn;
+    private m_akun m_akun;
+    private lahan lahan;
+
+    private String nama;
 //    private static String namaa;
 
     public c_menu(Awal mm) {
+        main_menu = new Awal();
         main_menu = mm;
 
         main_menu.setVisible(true);
@@ -48,13 +52,6 @@ public class c_menu {
         main_menu.b_mulai().addMouseListener(new klikMulai());
         main_menu.b_bantuan().addMouseListener(new klikBantuan());
     }
-//        public static void setUser(String nama) {
-//        c_menu.namaa = nama;
-//    }
-//
-//    public static String getUser() {
-//        return namaa;
-//    }
 
     public c_menu(exit ext) {
         exit = ext;
@@ -65,38 +62,68 @@ public class c_menu {
     }
 
     public c_menu(framepilih fp) {
+        frap = new framepilih();
         frap = fp;
         frap.setVisible(true);
-        
+
         frap.b_mulaibaru().addMouseListener(new klikMulaibaru());
         frap.b_lanjut().addMouseListener(new klikLanjut());
     }
-    
-    public c_menu (createname name) throws SQLException{
-        cn = name;
-        mA = new m_akun();
-        cn.setVisible(true);
-   
-        cn.getOK().addActionListener(new OkListener());
-    }
-    
-    private class OkListener implements ActionListener {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    mA.simpan("NULL, '"+ cn.getNama()+"'");
-                   
-                } catch (SQLException ex) {
-                    Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                new c_lahan();
-            }
-        }
+    public c_menu(createname cn, m_akun m_akun) {
+        this.cn = new createname();
+        this.cn = cn;
+        this.m_akun = m_akun;
+        this.cn.setVisible(true);
+
+        cn.getOK().addMouseListener(new klikOK());
+    }
 
     public void ubahIcon(JButton tombol, String src) {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
         tombol.setIcon(ii);
+    }
+
+    private class klikOK implements MouseListener {
+
+        public klikOK() {
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            nama = cn.getNama().getText();
+            
+            if(nama.trim().isEmpty()){
+                JOptionPane.showMessageDialog(cn, "Lengkapi data terlebih dahulu");
+            } else {
+                if(m_akun.createAkun("NULL, '" + nama + "'")){
+                    JOptionPane.showMessageDialog(cn, "Pendaftaran berhasil");
+                    new c_lahan(new lahan(), new m_akun(), nama);
+                    cn.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(cn, "Pendaftaran gagal");
+                }
+            }
+            
+            
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
     }
 
     private class klikBantuan implements MouseListener {
@@ -135,7 +162,7 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new c_menu(frap);
+            new c_menu(new framepilih());
         }
 
         @Override
@@ -156,6 +183,7 @@ public class c_menu {
             ubahIcon(main_menu.b_mulai(), "/gambarmenu/mulai.png");
         }
     }
+
     private class klikTidak implements MouseListener {
 
         public klikTidak() {
@@ -196,7 +224,7 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            
+
         }
 
         @Override
@@ -217,6 +245,7 @@ public class c_menu {
             ubahIcon(frap.b_lanjut(), "/gambarplay/continue1.png");
         }
     }
+
     private class klikMulaibaru implements MouseListener {
 
         public klikMulaibaru() {
@@ -224,12 +253,8 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            frap.dispose();
-            try {
-                new c_menu(cn);
-            } catch (SQLException ex) {
-                Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            new c_menu(new createname(), new m_akun());
+            
         }
 
         @Override
@@ -292,7 +317,7 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new c_menu(exit);
+            new c_menu(new exit());
         }
 
         @Override

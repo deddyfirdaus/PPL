@@ -12,24 +12,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Deddy
  */
-public class m_akun extends basemodel{
-    
-//    String username = c_menu.getUser();
-    
-    public m_akun() throws SQLException {
-        kon = new koneksidb("root", "", "tanigo");
+public class m_akun {
 
+    Connection conn;
+    Statement stmt;
+    
+    public m_akun() {
+        conn = new koneksidb().koneksidb();
     }
-    public boolean simpan(String query) throws SQLException {
-        String queri = "INSERT INTO `player` (`id`, `nama`) VALUES (" +query+ " )";
-        System.out.println(queri);
-        return super.save(queri);
+    
+    public boolean createAkun(String nama){
+        boolean hasil = false;
+        try {
+            stmt = conn.createStatement();
+            String sql = "INSERT INTO `player`(`id`, `nama`) VALUES (" +nama+ ")";
+            stmt.executeUpdate(sql);
+            hasil = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(m_akun.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return hasil;
     }
+
     
 //     public String[] NamaPlayer() throws SQLException {
 //        String query = "SELECT nama FROM player where id = (select id from player where nama='" + username + "')";

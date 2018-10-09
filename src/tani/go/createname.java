@@ -6,6 +6,7 @@
 package tani.go;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,14 +19,14 @@ public class createname extends javax.swing.JFrame {
      */
     public createname() {
        this.setUndecorated(true);
-        this.setAlwaysOnTop(false);
+        this.setAlwaysOnTop(true);
         this.setResizable(false);
         initComponents();
         setLocationRelativeTo(this);
         this.setSize(370, 190);
     }
-   public String getNama() {
-        return nama.getText();
+   public JTextField getNama() {
+        return nama;
     }
    
      public JButton getOK() {
