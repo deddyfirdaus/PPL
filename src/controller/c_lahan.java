@@ -24,7 +24,6 @@ public class c_lahan {
     private m_akun m_akun;
     private lahan lahan = new lahan();
     private String nama;
-    private boolean bar = false;
 
     public c_lahan(lahan lahan, m_akun m_akun, String nama) {
         this.nama = nama;
@@ -35,11 +34,17 @@ public class c_lahan {
         lahan.bar_alatBahan().setVisible(false);
         lahan.bar_bibit().setVisible(false);
         lahan.bibit_padi().setVisible(false);
+        lahan.bibit_jagung().setVisible(false);
+        lahan.bibit_tebu().setVisible(false);
+        lahan.alat_ktl().setVisible(false);
+        lahan.alat_ppk().setVisible(false);
+        lahan.alat_sbt().setVisible(false);
 
         lahan.namaplayer().setText(nama);
 
         lahan.alat_bahan().addMouseListener(new klikAlatBahan());
         lahan.bibit().addMouseListener(new klikBibit());
+        
         
         
 

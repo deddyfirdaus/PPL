@@ -53,14 +53,33 @@ public class lahan extends javax.swing.JFrame {
         return bar_bibit;
     }
       
-      public JLabel petak1(){
+      public JButton petak1(){
           return petak1;
       }
       
       public JButton bibit_padi(){
           return bibit_padi;
       }
-
+      
+      public JButton bibit_jagung(){
+          return bibit_jagung;
+      }
+      
+      public JButton bibit_tebu(){
+          return bibit_tebu;
+      }
+      
+      public JButton alat_ktl(){
+          return alat_ktl;
+      }
+      
+      public JButton alat_ppk(){
+          return alat_ppk;
+      }
+      
+      public JButton alat_sbt(){
+          return alat_sbt;
+      }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,28 +90,37 @@ public class lahan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        nameplayer = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        petak1 = new javax.swing.JLabel();
+        petak1 = new javax.swing.JButton();
         petak5 = new javax.swing.JButton();
         petak2 = new javax.swing.JButton();
         petak6 = new javax.swing.JButton();
         petak3 = new javax.swing.JButton();
         petak4 = new javax.swing.JButton();
+        alat_sbt = new javax.swing.JButton();
+        alat_ppk = new javax.swing.JButton();
+        alat_ktl = new javax.swing.JButton();
+        bibit_tebu = new javax.swing.JButton();
         bibit_padi = new javax.swing.JButton();
+        bibit_jagung = new javax.swing.JButton();
         bar_bibit = new javax.swing.JButton();
         bar_alatBahan = new javax.swing.JButton();
         bibit = new javax.swing.JButton();
         alat_bahan = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        nameplayer = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nameplayer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nameplayer.setText("NamaPlayer");
+        jPanel1.add(nameplayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/bibitx.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 650, 40, 40));
@@ -101,6 +129,8 @@ public class lahan extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 650, 60, 40));
 
         petak1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/lhn.png"))); // NOI18N
+        petak1.setBorderPainted(false);
+        petak1.setContentAreaFilled(false);
         jPanel1.add(petak1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, -1, -1));
 
         petak5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/lhn.png"))); // NOI18N
@@ -128,10 +158,35 @@ public class lahan extends javax.swing.JFrame {
         petak4.setContentAreaFilled(false);
         jPanel1.add(petak4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, -1, -1));
 
+        alat_sbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/alatsbt.png"))); // NOI18N
+        alat_sbt.setBorderPainted(false);
+        alat_sbt.setContentAreaFilled(false);
+        jPanel1.add(alat_sbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 90, 50));
+
+        alat_ppk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/alatppk.png"))); // NOI18N
+        alat_ppk.setBorderPainted(false);
+        alat_ppk.setContentAreaFilled(false);
+        jPanel1.add(alat_ppk, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 90, 50));
+
+        alat_ktl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/alatktl.png"))); // NOI18N
+        alat_ktl.setBorderPainted(false);
+        alat_ktl.setContentAreaFilled(false);
+        jPanel1.add(alat_ktl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 90, 50));
+
+        bibit_tebu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/bibitubi.png"))); // NOI18N
+        bibit_tebu.setBorderPainted(false);
+        bibit_tebu.setContentAreaFilled(false);
+        jPanel1.add(bibit_tebu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 90, 50));
+
         bibit_padi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/bibitpd.png"))); // NOI18N
         bibit_padi.setBorderPainted(false);
         bibit_padi.setContentAreaFilled(false);
-        jPanel1.add(bibit_padi, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 450, 90, 50));
+        jPanel1.add(bibit_padi, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 90, 50));
+
+        bibit_jagung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/bibitjg.png"))); // NOI18N
+        bibit_jagung.setBorderPainted(false);
+        bibit_jagung.setContentAreaFilled(false);
+        jPanel1.add(bibit_jagung, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 90, 50));
 
         bar_bibit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/bibitaa.png"))); // NOI18N
         bar_bibit.setText("\n");
@@ -164,9 +219,6 @@ public class lahan extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 650, 60, 40));
 
         getContentPane().add(jPanel1, "card4");
-
-        nameplayer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        getContentPane().add(nameplayer, "card2");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/xxx.png"))); // NOI18N
         getContentPane().add(jLabel1, "card3");
@@ -211,10 +263,15 @@ public class lahan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alat_bahan;
+    private javax.swing.JButton alat_ktl;
+    private javax.swing.JButton alat_ppk;
+    private javax.swing.JButton alat_sbt;
     private javax.swing.JButton bar_alatBahan;
     private javax.swing.JButton bar_bibit;
     private javax.swing.JButton bibit;
+    private javax.swing.JButton bibit_jagung;
     private javax.swing.JButton bibit_padi;
+    private javax.swing.JButton bibit_tebu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -222,7 +279,7 @@ public class lahan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameplayer;
-    private javax.swing.JLabel petak1;
+    private javax.swing.JButton petak1;
     private javax.swing.JButton petak2;
     private javax.swing.JButton petak3;
     private javax.swing.JButton petak4;
