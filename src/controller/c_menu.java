@@ -254,6 +254,7 @@ public class c_menu {
         @Override
         public void mouseClicked(MouseEvent e) {
             new c_menu(new createname(), new m_akun());
+            frap.dispose();
             
         }
 
