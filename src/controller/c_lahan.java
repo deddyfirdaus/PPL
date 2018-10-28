@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 import model.m_akun;
+import tani.go.Awal;
 import tani.go.Toko;
 import tani.go.lahan;
 
@@ -31,9 +32,13 @@ public class c_lahan {
     private lahan lahan = new lahan();
     private String nama;
     private boolean bar = false;
+    int tanam[] = {0, 0, 0, 0, 0, 0};
+    int status1[] = {0, 0, 0, 0, 0, 0};
     int idlahan;
     int idbibit;
     public static int waktu = 10;
+    public Awal main_menu = new Awal();
+    
 
     public c_lahan(lahan lahan, m_akun m_akun, String nama) {
         this.nama = nama;
@@ -53,12 +58,12 @@ public class c_lahan {
         lahan.bibit().addMouseListener(new klikBibit());
         lahan.getToko().addMouseListener(new b_toko());
 
-        lahan.getPetak1().addMouseListener(new pilihLahan1());
-        lahan.getPetak2().addMouseListener(new pilihLahan1());
-        lahan.getPetak3().addMouseListener(new pilihLahan1());
-        lahan.getPetak4().addMouseListener(new pilihLahan1());
-        lahan.getPetak5().addMouseListener(new pilihLahan1());
-        lahan.getPetak6().addMouseListener(new pilihLahan1());
+        lahan.getPetak1().addMouseListener(new pilihLahan());
+        lahan.getPetak2().addMouseListener(new pilihLahan());
+        lahan.getPetak3().addMouseListener(new pilihLahan());
+        lahan.getPetak4().addMouseListener(new pilihLahan());
+        lahan.getPetak5().addMouseListener(new pilihLahan());
+        lahan.getPetak6().addMouseListener(new pilihLahan());
 
         lahan.getjg1_1().setVisible(false);
         lahan.getjg2_1().setVisible(false);
@@ -102,8 +107,80 @@ public class c_lahan {
         lahan.pestisida().setVisible(false);
         lahan.bibit_jagung().setVisible(false);
         lahan.bibit_tebu().setVisible(false);
-
     }
+
+//    public c_lahan(Awal mm, lahan lahan, m_akun m_akun, String nama) {
+// 
+//        this.nama = nama;
+//        this.m_akun = m_akun;
+//        this.lahan = lahan;
+//
+//        lahan.setVisible(true);
+//        lahan.bar_alatBahan().setVisible(false);
+//        lahan.bar_bibit().setVisible(false);
+//        lahan.bibit_padi().setVisible(false);
+//
+//        lahan.namaplayer().setText(nama);
+//
+//        lahan.bibit_jagung().addMouseListener(new pilihbibit());
+//        lahan.bibit_padi().addMouseListener(new pilihbibit());
+//        lahan.alat_bahan().addMouseListener(new klikAlatBahan());
+//        lahan.bibit().addMouseListener(new klikBibit());
+//        lahan.getToko().addMouseListener(new b_toko());
+//
+//        lahan.getPetak1().addMouseListener(new pilihLahan());
+//        lahan.getPetak2().addMouseListener(new pilihLahan());
+//        lahan.getPetak3().addMouseListener(new pilihLahan());
+//        lahan.getPetak4().addMouseListener(new pilihLahan());
+//        lahan.getPetak5().addMouseListener(new pilihLahan());
+//        lahan.getPetak6().addMouseListener(new pilihLahan());
+//
+//        lahan.getjg1_1().setVisible(false);
+//        lahan.getjg2_1().setVisible(false);
+//        lahan.getjg3_1().setVisible(false);
+//        lahan.getjg1_2().setVisible(false);
+//        lahan.getjg2_2().setVisible(false);
+//        lahan.getjg3_2().setVisible(false);
+//        lahan.getjg1_3().setVisible(false);
+//        lahan.getjg2_3().setVisible(false);
+//        lahan.getjg3_3().setVisible(false);
+//        lahan.getjg1_4().setVisible(false);
+//        lahan.getjg2_4().setVisible(false);
+//        lahan.getjg3_4().setVisible(false);
+//        lahan.getjg1_5().setVisible(false);
+//        lahan.getjg2_5().setVisible(false);
+//        lahan.getjg3_5().setVisible(false);
+//        lahan.getjg1_6().setVisible(false);
+//        lahan.getjg2_6().setVisible(false);
+//        lahan.getjg3_6().setVisible(false);
+//        lahan.getpd1_1().setVisible(false);
+//        lahan.getpd2_1().setVisible(false);
+//        lahan.getpd3_1().setVisible(false);
+//        lahan.getpd1_2().setVisible(false);
+//        lahan.getpd2_2().setVisible(false);
+//        lahan.getpd3_2().setVisible(false);
+//        lahan.getpd1_3().setVisible(false);
+//        lahan.getpd2_3().setVisible(false);
+//        lahan.getpd3_3().setVisible(false);
+//        lahan.getpd1_4().setVisible(false);
+//        lahan.getpd2_4().setVisible(false);
+//        lahan.getpd3_4().setVisible(false);
+//        lahan.getpd1_5().setVisible(false);
+//        lahan.getpd2_5().setVisible(false);
+//        lahan.getpd3_5().setVisible(false);
+//        lahan.getpd1_6().setVisible(false);
+//        lahan.getpd2_6().setVisible(false);
+//        lahan.getpd3_6().setVisible(false);
+//        lahan.sabit().setVisible(false);
+//        lahan.pupuk().setVisible(false);
+//        lahan.alatsiram().setVisible(false);
+//        lahan.pestisida().setVisible(false);
+//        lahan.bibit_jagung().setVisible(false);
+//        lahan.bibit_tebu().setVisible(false);
+//    }
+
+
+   
 
     private void timer(int idlhn, int dbbt) {
         Timer time;
@@ -116,112 +193,118 @@ public class c_lahan {
                 sec--;
 
                 if (sec == 5) {
-                    if (lahan.getjg1_1().isVisible() && idlahan == 1 && idbibit == 2) {
+                    //jagung
+                    if (lahan.getjg1_1().isVisible() && idlhn == 0 && dbbt == 2) {
                         lahan.getjg2_1().setVisible(true);
                         lahan.getjg1_1().setVisible(false);
                     }
-                    if (lahan.getjg1_2().isVisible() && idlahan == 2 && idbibit == 2) {
+                    if (lahan.getjg1_2().isVisible() && idlhn == 1 && dbbt == 2) {
                         lahan.getjg2_2().setVisible(true);
                         lahan.getjg1_2().setVisible(false);
                     }
-                    if (lahan.getjg1_3().isVisible() && idlahan == 3 && idbibit == 2) {
+                    if (lahan.getjg1_3().isVisible() && idlhn == 2 && dbbt == 2) {
                         lahan.getjg2_3().setVisible(true);
                         lahan.getjg1_3().setVisible(false);
                     }
-                    if (lahan.getjg1_4().isVisible() && idlahan == 4 && idbibit == 2) {
+                    if (lahan.getjg1_4().isVisible() && idlhn == 3 && dbbt == 2) {
                         lahan.getjg2_4().setVisible(true);
                         lahan.getjg1_4().setVisible(false);
                     }
-                    if (lahan.getjg1_5().isVisible() && idlahan == 5 && idbibit == 2) {
+                    if (lahan.getjg1_5().isVisible() && idlhn == 4 && dbbt == 2) {
                         lahan.getjg2_5().setVisible(true);
                         lahan.getjg1_5().setVisible(false);
                     }
-                    if (lahan.getjg1_6().isVisible() && idlahan == 6 && idbibit == 2) {
+                    if (lahan.getjg1_6().isVisible() && idlhn == 5 && dbbt == 2) {
                         lahan.getjg2_6().setVisible(true);
                         lahan.getjg1_6().setVisible(false);
                     }
-                    if (lahan.getpd1_1().isVisible() && idlahan == 1 && idbibit == 1) {
+                    
+                    //padi
+                    if (lahan.getpd1_1().isVisible() && idlhn == 0 && dbbt == 1) {
                         lahan.getpd2_1().setVisible(true);
                         lahan.getpd1_1().setVisible(false);
                     }
-                    if (lahan.getpd1_2().isVisible() && idlahan == 2 && idbibit == 1) {
+                    if (lahan.getpd1_2().isVisible() && idlhn == 1 && dbbt == 1) {
                         lahan.getpd2_2().setVisible(true);
                         lahan.getpd1_2().setVisible(false);
                     }
-                    if (lahan.getpd1_3().isVisible() && idlahan == 3 && idbibit == 1) {
+                    if (lahan.getpd1_3().isVisible() && idlhn == 2 && dbbt == 1) {
                         lahan.getpd2_3().setVisible(true);
                         lahan.getpd1_3().setVisible(false);
                     }
-                    if (lahan.getpd1_4().isVisible() && idlahan == 4 && idbibit == 1) {
+                    if (lahan.getpd1_4().isVisible() && idlhn == 3 && dbbt == 1) {
                         lahan.getpd2_4().setVisible(true);
                         lahan.getpd1_4().setVisible(false);
                     }
-                    if (lahan.getpd1_5().isVisible() && idlahan == 5 && idbibit == 1) {
+                    if (lahan.getpd1_5().isVisible() && idlhn == 4 && dbbt == 1) {
                         lahan.getpd2_5().setVisible(true);
                         lahan.getpd1_5().setVisible(false);
                     }
-                    if (lahan.getpd1_6().isVisible() && idlahan == 6 && idbibit == 1) {
+                    if (lahan.getpd1_6().isVisible() && idlhn == 5 && dbbt == 1) {
                         lahan.getpd2_6().setVisible(true);
                         lahan.getpd1_6().setVisible(false);
                     }
                 }
                 if (sec == 0) {
-                    if (lahan.getjg2_1().isVisible() && idlahan == 1 && idbibit == 2) {
+                    //jagung
+                    if (lahan.getjg2_1().isVisible() && idlhn == 0 && dbbt == 2) {
                         lahan.getjg3_1().setVisible(true);
                         lahan.getjg2_1().setVisible(false);
                         lahan.getjg1_1().setVisible(false);
                     }
-                    if (lahan.getjg2_2().isVisible() && idlahan == 2 && idbibit == 2) {
+                    if (lahan.getjg2_2().isVisible() && idlhn == 1 && dbbt == 2) {
                         lahan.getjg3_2().setVisible(true);
                         lahan.getjg2_2().setVisible(false);
                         lahan.getjg1_2().setVisible(false);
                     }
-                    if (lahan.getjg2_3().isVisible() && idlahan == 3 && idbibit == 2) {
+                    if (lahan.getjg2_3().isVisible() && idlhn == 2 && dbbt == 2) {
                         lahan.getjg3_3().setVisible(true);
                         lahan.getjg2_3().setVisible(false);
                         lahan.getjg1_3().setVisible(false);
                     }
-                    if (lahan.getjg2_4().isVisible() && idlahan == 4 && idbibit == 2) {
+                    if (lahan.getjg2_4().isVisible() && idlhn == 3 && dbbt == 2) {
                         lahan.getjg3_4().setVisible(true);
                         lahan.getjg2_4().setVisible(false);
                         lahan.getjg1_4().setVisible(false);
                     }
-                    if (lahan.getjg2_5().isVisible() && idlahan == 5 && idbibit == 2) {
+                    if (lahan.getjg2_5().isVisible() && idlhn == 4 && dbbt == 2) {
                         lahan.getjg3_5().setVisible(true);
                         lahan.getjg2_5().setVisible(false);
                         lahan.getjg1_5().setVisible(false);
                     }
-                    if (lahan.getjg2_6().isVisible() && idlahan == 6 && idbibit == 2) {
+                    if (lahan.getjg2_6().isVisible() && idlhn == 5 && dbbt == 2) {
                         lahan.getjg3_6().setVisible(true);
                         lahan.getjg2_6().setVisible(false);
                         lahan.getjg1_6().setVisible(false);
                     }
-                    if (lahan.getpd2_1().isVisible() && idlahan == 1 && idbibit == 1) {
+                    
+                    //padi
+                    if (lahan.getpd2_1().isVisible() && idlhn == 0 && dbbt == 1) {
                         lahan.getpd3_1().setVisible(true);
                         lahan.getpd2_1().setVisible(false);
                         lahan.getpd1_1().setVisible(false);
                     }
-                    if (lahan.getpd2_2().isVisible() && idlahan == 2 && idbibit == 1) {
+                    if (lahan.getpd2_2().isVisible() && idlhn == 1 && dbbt == 1) {
                         lahan.getpd3_2().setVisible(true);
                         lahan.getpd2_2().setVisible(false);
                         lahan.getpd1_2().setVisible(false);
                     }
-                    if (lahan.getpd2_3().isVisible() && idlahan == 3 && idbibit == 1) {
+                    if (lahan.getpd2_3().isVisible() && idlhn == 2 && dbbt == 1) {
                         lahan.getpd3_3().setVisible(true);
                         lahan.getpd2_3().setVisible(false);
                         lahan.getpd1_3().setVisible(false);
                     }
-                    if (lahan.getpd2_4().isVisible() && idlahan == 4 && idbibit == 1) {
+                    if (lahan.getpd2_4().isVisible() && idlhn == 3 && dbbt == 1) {
                         lahan.getpd3_4().setVisible(true);
                         lahan.getpd2_4().setVisible(false);
                         lahan.getpd1_4().setVisible(false);
                     }
-                    if (lahan.getpd2_5().isVisible() && idlahan == 5 && idbibit == 1) {
+                    if (lahan.getpd2_5().isVisible() && idlhn == 4 && dbbt == 1) {
                         lahan.getpd3_5().setVisible(true);
                         lahan.getpd2_5().setVisible(false);
                         lahan.getpd1_5().setVisible(false);
                     }
-                    if (lahan.getpd2_6().isVisible() && idlahan == 6 && idbibit == 1) {
+                    if (lahan.getpd2_6().isVisible() && idlhn == 5 && dbbt == 1) {
                         lahan.getpd3_6().setVisible(true);
                         lahan.getpd2_6().setVisible(false);
                         lahan.getpd1_6().setVisible(false);
@@ -234,7 +317,8 @@ public class c_lahan {
         time = new Timer(1000, gameTimer);
         time.start();
     }
-
+    
+   
     private class b_toko implements MouseListener {
 
         @Override
@@ -261,358 +345,36 @@ public class c_lahan {
 
     }
 
-    
-    
-    
-    private class pilihLahan1 implements MouseListener {
+    private class pilihLahan implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent me) {
             idlahan = 0;
             if (lahan.getPetak1() == me.getSource()) {
                 idlahan = 1;
-//                timer(idlahan, idbibit);
                 lahan.getPetak1().setVisible(false);
                 System.out.println(idlahan);
             } else if (lahan.getPetak2() == me.getSource()) {
                 idlahan = 2;
-//                timer(idlahan, idbibit);
                 lahan.getPetak2().setVisible(false);
                 System.out.println("lahan2");
             } else if (lahan.getPetak3() == me.getSource()) {
                 idlahan = 3;
-//                timer(idlahan, idbibit);
                 lahan.getPetak3().setVisible(false);
                 System.out.println("lahan3");
             } else if (lahan.getPetak4() == me.getSource()) {
                 idlahan = 4;
-//                timer(idlahan, idbibit);
                 lahan.getPetak4().setVisible(false);
                 System.out.println("lahan4");
             } else if (lahan.getPetak5() == me.getSource()) {
                 idlahan = 5;
-//                timer(idlahan, idbibit);
                 lahan.getPetak5().setVisible(false);
                 System.out.println("lahan5");
             } else if (lahan.getPetak6() == me.getSource()) {
                 idlahan = 6;
-//                timer(idlahan, idbibit);
                 lahan.getPetak6().setVisible(false);
                 System.out.println("lahan6");
             }
-            menanam(idlahan, idbibit);
-//            mulai();
-//            System.out.println(waktu);
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent me) {
-
-        }
-
-    }
-    
-    private class pilihLahan2 implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent me) {
-            idlahan = 0;
-            if (lahan.getPetak1() == me.getSource()) {
-                idlahan = 1;
-//                timer(idlahan, idbibit);
-                lahan.getPetak1().setVisible(false);
-                System.out.println(idlahan);
-            } else if (lahan.getPetak2() == me.getSource()) {
-                idlahan = 2;
-//                timer(idlahan, idbibit);
-                lahan.getPetak2().setVisible(false);
-                System.out.println("lahan2");
-            } else if (lahan.getPetak3() == me.getSource()) {
-                idlahan = 3;
-//                timer(idlahan, idbibit);
-                lahan.getPetak3().setVisible(false);
-                System.out.println("lahan3");
-            } else if (lahan.getPetak4() == me.getSource()) {
-                idlahan = 4;
-//                timer(idlahan, idbibit);
-                lahan.getPetak4().setVisible(false);
-                System.out.println("lahan4");
-            } else if (lahan.getPetak5() == me.getSource()) {
-                idlahan = 5;
-//                timer(idlahan, idbibit);
-                lahan.getPetak5().setVisible(false);
-                System.out.println("lahan5");
-            } else if (lahan.getPetak6() == me.getSource()) {
-                idlahan = 6;
-//                timer(idlahan, idbibit);
-                lahan.getPetak6().setVisible(false);
-                System.out.println("lahan6");
-            }
-            menanam(idlahan, idbibit);
-//            mulai();
-//            System.out.println(waktu);
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent me) {
-
-        }
-
-    }
-    
-    private class pilihLahan3 implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent me) {
-            idlahan = 0;
-            if (lahan.getPetak1() == me.getSource()) {
-                idlahan = 1;
-//                timer(idlahan, idbibit);
-                lahan.getPetak1().setVisible(false);
-                System.out.println(idlahan);
-            } else if (lahan.getPetak2() == me.getSource()) {
-                idlahan = 2;
-//                timer(idlahan, idbibit);
-                lahan.getPetak2().setVisible(false);
-                System.out.println("lahan2");
-            } else if (lahan.getPetak3() == me.getSource()) {
-                idlahan = 3;
-//                timer(idlahan, idbibit);
-                lahan.getPetak3().setVisible(false);
-                System.out.println("lahan3");
-            } else if (lahan.getPetak4() == me.getSource()) {
-                idlahan = 4;
-//                timer(idlahan, idbibit);
-                lahan.getPetak4().setVisible(false);
-                System.out.println("lahan4");
-            } else if (lahan.getPetak5() == me.getSource()) {
-                idlahan = 5;
-//                timer(idlahan, idbibit);
-                lahan.getPetak5().setVisible(false);
-                System.out.println("lahan5");
-            } else if (lahan.getPetak6() == me.getSource()) {
-                idlahan = 6;
-//                timer(idlahan, idbibit);
-                lahan.getPetak6().setVisible(false);
-                System.out.println("lahan6");
-            }
-            menanam(idlahan, idbibit);
-//            mulai();
-//            System.out.println(waktu);
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent me) {
-
-        }
-
-    }
-    
-    private class pilihLahan4 implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent me) {
-            idlahan = 0;
-            if (lahan.getPetak1() == me.getSource()) {
-                idlahan = 1;
-//                timer(idlahan, idbibit);
-                lahan.getPetak1().setVisible(false);
-                System.out.println(idlahan);
-            } else if (lahan.getPetak2() == me.getSource()) {
-                idlahan = 2;
-//                timer(idlahan, idbibit);
-                lahan.getPetak2().setVisible(false);
-                System.out.println("lahan2");
-            } else if (lahan.getPetak3() == me.getSource()) {
-                idlahan = 3;
-//                timer(idlahan, idbibit);
-                lahan.getPetak3().setVisible(false);
-                System.out.println("lahan3");
-            } else if (lahan.getPetak4() == me.getSource()) {
-                idlahan = 4;
-//                timer(idlahan, idbibit);
-                lahan.getPetak4().setVisible(false);
-                System.out.println("lahan4");
-            } else if (lahan.getPetak5() == me.getSource()) {
-                idlahan = 5;
-//                timer(idlahan, idbibit);
-                lahan.getPetak5().setVisible(false);
-                System.out.println("lahan5");
-            } else if (lahan.getPetak6() == me.getSource()) {
-                idlahan = 6;
-//                timer(idlahan, idbibit);
-                lahan.getPetak6().setVisible(false);
-                System.out.println("lahan6");
-            }
-            menanam(idlahan, idbibit);
-//            mulai();
-//            System.out.println(waktu);
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent me) {
-
-        }
-
-    }
-    
-    private class pilihLahan5 implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent me) {
-            idlahan = 0;
-            if (lahan.getPetak1() == me.getSource()) {
-                idlahan = 1;
-//                timer(idlahan, idbibit);
-                lahan.getPetak1().setVisible(false);
-                System.out.println(idlahan);
-            } else if (lahan.getPetak2() == me.getSource()) {
-                idlahan = 2;
-//                timer(idlahan, idbibit);
-                lahan.getPetak2().setVisible(false);
-                System.out.println("lahan2");
-            } else if (lahan.getPetak3() == me.getSource()) {
-                idlahan = 3;
-//                timer(idlahan, idbibit);
-                lahan.getPetak3().setVisible(false);
-                System.out.println("lahan3");
-            } else if (lahan.getPetak4() == me.getSource()) {
-                idlahan = 4;
-//                timer(idlahan, idbibit);
-                lahan.getPetak4().setVisible(false);
-                System.out.println("lahan4");
-            } else if (lahan.getPetak5() == me.getSource()) {
-                idlahan = 5;
-//                timer(idlahan, idbibit);
-                lahan.getPetak5().setVisible(false);
-                System.out.println("lahan5");
-            } else if (lahan.getPetak6() == me.getSource()) {
-                idlahan = 6;
-//                timer(idlahan, idbibit);
-                lahan.getPetak6().setVisible(false);
-                System.out.println("lahan6");
-            }
-            menanam(idlahan, idbibit);
-//            mulai();
-//            System.out.println(waktu);
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent me) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent me) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent me) {
-
-        }
-
-    }
-    
-    private class pilihLahan6 implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent me) {
-            idlahan = 0;
-            if (lahan.getPetak1() == me.getSource()) {
-                idlahan = 1;
-//                timer(idlahan, idbibit);
-                lahan.getPetak1().setVisible(false);
-                System.out.println(idlahan);
-            } else if (lahan.getPetak2() == me.getSource()) {
-                idlahan = 2;
-//                timer(idlahan, idbibit);
-                lahan.getPetak2().setVisible(false);
-                System.out.println("lahan2");
-            } else if (lahan.getPetak3() == me.getSource()) {
-                idlahan = 3;
-//                timer(idlahan, idbibit);
-                lahan.getPetak3().setVisible(false);
-                System.out.println("lahan3");
-            } else if (lahan.getPetak4() == me.getSource()) {
-                idlahan = 4;
-//                timer(idlahan, idbibit);
-                lahan.getPetak4().setVisible(false);
-                System.out.println("lahan4");
-            } else if (lahan.getPetak5() == me.getSource()) {
-                idlahan = 5;
-//                timer(idlahan, idbibit);
-                lahan.getPetak5().setVisible(false);
-                System.out.println("lahan5");
-            } else if (lahan.getPetak6() == me.getSource()) {
-                idlahan = 6;
-//                timer(idlahan, idbibit);
-                lahan.getPetak6().setVisible(false);
-                System.out.println("lahan6");
-            }
-            menanam(idlahan, idbibit);
-//            mulai();
-//            System.out.println(waktu);
 
         }
 
@@ -637,42 +399,51 @@ public class c_lahan {
     }
 
     private void menanam(int idlhn, int idbbt) {
-        if (idlhn == 1 && idbbt == 1) {
-            lahan.getpd1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 2 && idbbt == 1) {
-            lahan.getpd1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 3 && idbbt == 1) {
-            lahan.getpd1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 4 && idbbt == 1) {
-            lahan.getpd1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 5 && idbbt == 1) {
-            lahan.getpd1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 6 && idbbt == 1) {
-            lahan.getpd1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 1 && idbbt == 2) {
-            lahan.getjg1_1().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 2 && idbbt == 2) {
-            lahan.getjg1_2().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 3 && idbbt == 2) {
-            lahan.getjg1_3().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 4 && idbbt == 2) {
-            lahan.getjg1_4().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 5 && idbbt == 2) {
-            lahan.getjg1_5().setVisible(true);
-            timer(idlhn, idbbt);
-        } else if (idlhn == 6 && idbbt == 2) {
-            lahan.getjg1_6().setVisible(true);
-            timer(idlhn, idbbt);
+        for (int i = 0; i < 6; i++) {
+            if (tanam[i] == 0) {
+                if (idlhn == 1 && idbbt == 1) {
+                    lahan.getpd1_1().setVisible(true);
+                    tanam[0] = 1;
+                } else if (idlhn == 2 && idbbt == 1) {
+                    lahan.getpd1_2().setVisible(true);
+                    tanam[1] = 1;
+                } else if (idlhn == 3 && idbbt == 1) {
+                    lahan.getpd1_3().setVisible(true);
+                    tanam[2] = 1;
+                } else if (idlhn == 4 && idbbt == 1) {
+                    lahan.getpd1_4().setVisible(true);
+                    tanam[3] = 1;
+                } else if (idlhn == 5 && idbbt == 1) {
+                    lahan.getpd1_5().setVisible(true);
+                    tanam[4] = 1;
+                } else if (idlhn == 6 && idbbt == 1) {
+                    lahan.getpd1_6().setVisible(true);
+                    tanam[5] = 1;
+                } else if (idlhn == 1 && idbbt == 2) {
+                    lahan.getjg1_1().setVisible(true);
+                    tanam[0] = 2;
+                } else if (idlhn == 2 && idbbt == 2) {
+                    lahan.getjg1_2().setVisible(true);
+                    tanam[1] = 2;
+                } else if (idlhn == 3 && idbbt == 2) {
+                    lahan.getjg1_3().setVisible(true);
+                    tanam[2] = 2;
+                } else if (idlhn == 4 && idbbt == 2) {
+                    lahan.getjg1_4().setVisible(true);
+                    tanam[3] = 2;
+                } else if (idlhn == 5 && idbbt == 2) {
+                    lahan.getjg1_5().setVisible(true);
+                    tanam[4] = 2;
+                } else if (idlhn == 6 && idbbt == 2) {
+                    lahan.getjg1_6().setVisible(true);
+                    tanam[5] = 2;
+                }
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            if (tanam[i] != 0) {
+            timer(i, tanam[i]);
+            }
         }
     }
 
@@ -693,11 +464,9 @@ public class c_lahan {
             idbibit = 0;
             if (lahan.bibit_padi() == me.getSource()) {
                 idbibit = 1;
-//                timer(idlahan, idbibit);
                 System.out.println("bibitpadi");
             } else if (lahan.bibit_jagung() == me.getSource()) {
                 idbibit = 2;
-//                timer(idlahan, idbibit);
                 System.out.println("bibitjagung");
             } else if (lahan.bibit_tebu() == me.getSource()) {
                 idbibit = 3;
@@ -810,5 +579,6 @@ public class c_lahan {
             ubahIcon(lahan.alat_bahan(), "/gambarlahan/alat.png");
         }
     }
+    
 
 }

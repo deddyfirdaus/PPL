@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +32,7 @@ import tani.go.lahan;
  */
 public class c_menu {
 
-    protected Awal main_menu;
+    private Awal main_menu;
     private exit exit;
     private framepilih frap;
     private createname cn;
@@ -39,44 +42,35 @@ public class c_menu {
     private String nama;
 //    private static String namaa;
 
-    public c_menu(Awal mm) {
+    public c_menu(Awal mm, createname cn, m_akun m_akun, exit ext, framepilih fp) {
         main_menu = new Awal();
         main_menu = mm;
 
         main_menu.setVisible(true);
         main_menu.pindah("main_menu");
+        
+        this.cn = new createname();
+        this.cn = cn;
+        this.m_akun = m_akun;
 
+        this.cn.getOK().addMouseListener(new klikOK());
+        
         main_menu.b_tentang().addMouseListener(new klikTentang());
         main_menu.b_kembten().addMouseListener(new kembaliTentang());
         main_menu.b_keluar().addMouseListener(new klikKeluar());
         main_menu.b_mulai().addMouseListener(new klikMulai());
         main_menu.b_bantuan().addMouseListener(new klikBantuan());
-    }
-
-    public c_menu(exit ext) {
+        
         exit = ext;
-        exit.setVisible(true);
 
         exit.b_ya().addMouseListener(new klikYa());
         exit.b_tidak().addMouseListener(new klikTidak());
-    }
-
-    public c_menu(framepilih fp) {
-        frap = new framepilih();
+        
+         frap = new framepilih();
         frap = fp;
-        frap.setVisible(true);
 
         frap.b_mulaibaru().addMouseListener(new klikMulaibaru());
         frap.b_lanjut().addMouseListener(new klikLanjut());
-    }
-
-    public c_menu(createname cn, m_akun m_akun) {
-        this.cn = new createname();
-        this.cn = cn;
-        this.m_akun = m_akun;
-        this.cn.setVisible(true);
-
-        cn.getOK().addMouseListener(new klikOK());
     }
 
     public void ubahIcon(JButton tombol, String src) {
@@ -100,6 +94,7 @@ public class c_menu {
                     JOptionPane.showMessageDialog(cn, "Pendaftaran berhasil");
                     new c_lahan(new lahan(), new m_akun(), nama);
                     cn.dispose();
+                    main_menu.dispose();
                 } else{
                     JOptionPane.showMessageDialog(cn, "Pendaftaran gagal");
                 }
@@ -162,7 +157,7 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new c_menu(new framepilih());
+            frap.setVisible(true);
         }
 
         @Override
@@ -246,6 +241,7 @@ public class c_menu {
         }
     }
 
+    
     private class klikMulaibaru implements MouseListener {
 
         public klikMulaibaru() {
@@ -253,9 +249,8 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new c_menu(new createname(), new m_akun());
+            cn.setVisible(true);
             frap.dispose();
-            
         }
 
         @Override
@@ -318,7 +313,7 @@ public class c_menu {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new c_menu(new exit());
+           exit.setVisible(true);
         }
 
         @Override

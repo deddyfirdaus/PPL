@@ -35,7 +35,7 @@ public class c_toko {
 
         @Override
         public void mouseClicked(MouseEvent me) {
-            new c_lahan(new lahan(), new m_akun(), nama);
+//            new c_lahan(new Awal(), new lahan(), new m_akun(), nama);
             System.out.println("bisa");
             toko.dispose();
         }

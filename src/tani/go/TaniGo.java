@@ -19,8 +19,8 @@ public class TaniGo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        new c_menu(new Awal());
-        new c_lahan(new lahan(), new m_akun(), "ree");
+        new c_menu(new Awal(), new createname(), new m_akun(), new exit(), new framepilih());
+//        new c_lahan(new lahan(), new m_akun(), "ree");
     }
     
 }
