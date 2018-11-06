@@ -25,10 +25,10 @@ public class Toko extends javax.swing.JFrame {
         this.setSize(1280, 700);
         setLocationRelativeTo(this);
     }
-   public JButton getBack() {
-        return b_back;
-    } 
-   
+    public JButton getBtnKembali() {
+        return btnKembali;
+    }   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,16 +39,15 @@ public class Toko extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        b_back = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        b_back.setToolTipText("");
-        b_back.setBorderPainted(false);
-        b_back.setContentAreaFilled(false);
-        getContentPane().add(b_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 80, 80));
+        btnKembali.setBorderPainted(false);
+        btnKembali.setContentAreaFilled(false);
+        getContentPane().add(btnKembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 80, 80));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/view.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -92,7 +91,7 @@ public class Toko extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton b_back;
+    private javax.swing.JButton btnKembali;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

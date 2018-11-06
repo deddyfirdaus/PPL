@@ -7,392 +7,183 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import model.m_akun;
-import tani.go.Awal;
-import tani.go.createname;
-import tani.go.exit;
-import tani.go.framepilih;
-import tani.go.lahan;
+import model.m_aset;
+import model.m_player;
+import v.about;
+import v.createname;
+import v.framepilih;
+import v.keluargame;
+import v.load;
+import v.menu;
 
-/**
- *
- * @author ggnryr
- */
 public class c_menu {
 
-    private Awal main_menu;
-    private exit exit;
-    private framepilih frap;
+    private about vAbout;
+    private keluargame exit;
     private createname cn;
-    private m_akun m_akun;
-    private lahan lahan;
+    private menu vMenu;
+    private framepilih fp;
+    private load vLoad;
+    private m_player mPlayer;
+    private m_aset mAset;
 
-    private String nama;
-//    private static String namaa;
 
-    public c_menu(Awal mm, createname cn, m_akun m_akun, exit ext, framepilih fp) {
-        main_menu = new Awal();
-        main_menu = mm;
-
-        main_menu.setVisible(true);
-        main_menu.pindah("main_menu");
+    public c_menu() throws SQLException {
+        vAbout = new about();
+        vMenu = new menu();
+        vLoad = new load();
+        fp = new framepilih();
+        cn = new createname();
+        exit = new keluargame();
+        mPlayer = new m_player();
+        mAset = new m_aset();
+        vMenu.getBtnMulai().addActionListener(new mulaiAction());
+        cn.getOK().addActionListener(new okAction());;
+        vLoad.getBtnOk().addActionListener(new okActionLoad());
+        vLoad.getBtnBatal().addActionListener(new batalActionLoad());
+        vMenu.getBtnKeluar().addActionListener(new keluarAction());
+        vMenu.getBtnAbout().addActionListener(new aboutAction());
+        vAbout.getBtnKembali().addActionListener(new kembaliAction());
+        vMenu.setVisible(true);
         
-        this.cn = new createname();
-        this.cn = cn;
-        this.m_akun = m_akun;
-
-        this.cn.getOK().addMouseListener(new klikOK());
-        
-        main_menu.b_tentang().addMouseListener(new klikTentang());
-        main_menu.b_kembten().addMouseListener(new kembaliTentang());
-        main_menu.b_keluar().addMouseListener(new klikKeluar());
-        main_menu.b_mulai().addMouseListener(new klikMulai());
-        main_menu.b_bantuan().addMouseListener(new klikBantuan());
-        
-        exit = ext;
-
-        exit.b_ya().addMouseListener(new klikYa());
-        exit.b_tidak().addMouseListener(new klikTidak());
-        
-         frap = new framepilih();
-        frap = fp;
-
-        frap.b_mulaibaru().addMouseListener(new klikMulaibaru());
-        frap.b_lanjut().addMouseListener(new klikLanjut());
+        exit.b_ya().addActionListener(new klikYa());
+        exit.b_tidak().addActionListener(new klikTidak());
+        fp.b_mulaibaru().addActionListener(new klikMulaibaru());
+        fp.b_lanjut().addActionListener(new loadAction());
     }
 
-    public void ubahIcon(JButton tombol, String src) {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
-        tombol.setIcon(ii);
-    }
-
-    private class klikOK implements MouseListener {
-
-        public klikOK() {
-        }
+    private class klikMulaibaru implements ActionListener{
 
         @Override
-        public void mouseClicked(MouseEvent e) {
-            nama = cn.getNama().getText();
-            
-            if(nama.trim().isEmpty()){
-                JOptionPane.showMessageDialog(cn, "Lengkapi data terlebih dahulu");
-            } else {
-                if(m_akun.createAkun("NULL, '" + nama + "'")){
-                    JOptionPane.showMessageDialog(cn, "Pendaftaran berhasil");
-                    new c_lahan(new lahan(), new m_akun(), nama);
-                    cn.dispose();
-                    main_menu.dispose();
-                } else{
-                    JOptionPane.showMessageDialog(cn, "Pendaftaran gagal");
-                }
-            }
-            
-            
-            
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-        }
-    }
-
-    private class klikBantuan implements MouseListener {
-
-        public klikBantuan() {
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(main_menu.b_bantuan(), "/gambarmenu/bantuan1.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(main_menu.b_bantuan(), "/gambarmenu/bantuan.png");
-        }
-    }
-
-    private class klikMulai implements MouseListener {
-
-        public klikMulai() {
-
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            frap.setVisible(true);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(main_menu.b_mulai(), "/gambarmenu/mulai1.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(main_menu.b_mulai(), "/gambarmenu/mulai.png");
-        }
-    }
-
-    private class klikTidak implements MouseListener {
-
-        public klikTidak() {
-        }
-
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            exit.setVisible(false);
-//        }
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            exit.setVisible(false);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(exit.b_tidak(), "/gambar_exit/tidak1.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(exit.b_tidak(), "/gambar_exit/tidak.png");
-        }
-    }
-
-    private class klikLanjut implements MouseListener {
-
-        public klikLanjut() {
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(frap.b_lanjut(), "/gambarplay/continue.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(frap.b_lanjut(), "/gambarplay/continue1.png");
-        }
-    }
-
-    
-    private class klikMulaibaru implements MouseListener {
-
-        public klikMulaibaru() {
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
+        public void actionPerformed(ActionEvent ae) {
             cn.setVisible(true);
-            frap.dispose();
+            fp.dispose();
         }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(frap.b_mulaibaru(), "/gambarplay/new game.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(frap.b_mulaibaru(), "/gambarplay/new game1.png");
-        }
+    
     }
+    private class klikYa implements ActionListener{
 
-    private class klikYa implements MouseListener {
-
-        public klikYa() {
-        }
-
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.exit(0);
-//        }
         @Override
-        public void mouseClicked(MouseEvent e) {
+        public void actionPerformed(ActionEvent ae) {
             System.exit(0);
         }
+    
+    }
+    private class klikTidak implements ActionListener{
 
         @Override
-        public void mousePressed(MouseEvent e) {
+        public void actionPerformed(ActionEvent ae) {
+            exit.dispose();
         }
+    
+    }
+       
+    private class aboutAction implements ActionListener {
 
         @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(exit.b_ya(), "/gambar_exit/ya1.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(exit.b_ya(), "/gambar_exit/ya.png");
+        public void actionPerformed(ActionEvent e) {
+            vAbout.setVisible(true);
+            vMenu.setVisible(false);
         }
 
     }
 
-    private class klikKeluar implements MouseListener {
-
-        private klikKeluar() {
-        }
+    private class kembaliAction implements ActionListener {
 
         @Override
-        public void mouseClicked(MouseEvent e) {
-           exit.setVisible(true);
+        public void actionPerformed(ActionEvent e) {
+            vAbout.setVisible(false);
+            vMenu.setVisible(true);
         }
+        
+    }
+
+    private class batalActionLoad implements ActionListener {
 
         @Override
-        public void mousePressed(MouseEvent e) {
+        public void actionPerformed(ActionEvent e) {
+            vLoad.dispose();
+            vMenu.setVisible(true);
         }
+    }
+
+    private class okActionLoad implements ActionListener {
 
         @Override
-        public void mouseReleased(MouseEvent e) {
+        public void actionPerformed(ActionEvent e) {
+            if (vLoad.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(vLoad, "Pilih dahulu");
+            } else {
+                try {
+                    new c_home(vLoad.getIdTabel());
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                vLoad.setVisible(false);
+            }
         }
+    }
+
+    private class loadAction implements ActionListener {
 
         @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(main_menu.b_keluar(), "/gambarmenu/keluar1.png");
+        public void actionPerformed(ActionEvent e) {
+            vLoad.setVisible(true);
+            fp.dispose();
+            try {
+                vLoad.setTableModel(mPlayer.getTabel());
+            } catch (SQLException ex) {
+                Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            vMenu.setVisible(false);
         }
+    }
+
+    private class okAction implements ActionListener {
 
         @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(main_menu.b_keluar(), "/gambarmenu/keluar.png");
+        public void actionPerformed(ActionEvent e) {
+            try {
+
+                if (cn.getNama().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(cn, "Username tidak boleh kosong");
+                } else {
+                    mPlayer.insertUsername(cn.getNama().getText());
+                    mAset.insertAset();
+                    JOptionPane.showMessageDialog(cn, "Username " + cn.getNama().getText() + " berhasil dibuat");
+                    new c_home(cn.getNama().getText());
+                    cn.dispose();
+                    vMenu.setVisible(false);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(c_menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
 
     }
 
-    private class kembaliTentang implements MouseListener {
-
-        public kembaliTentang() {
-        }
+ private class mulaiAction implements ActionListener {
 
         @Override
-        public void mouseClicked(MouseEvent e) {
-            main_menu.pindah("main_menu");
+        public void actionPerformed(ActionEvent e) {
+            fp.setVisible(true);
+
         }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(main_menu.b_kembten(), "/gambar_tentang/back1.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(main_menu.b_kembten(), "/gambar_tentang/back.png");
-        }
     }
 
-    private class klikTentang implements MouseListener {
 
-        public klikTentang() {
-        }
+    private class keluarAction implements ActionListener {
 
         @Override
-        public void mouseClicked(MouseEvent e) {
-            main_menu.pindah("tentang");
+        public void actionPerformed(ActionEvent e) {
+            exit.setVisible(true);
         }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            ubahIcon(main_menu.b_tentang(), "/gambarmenu/tentang1.png");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            ubahIcon(main_menu.b_tentang(), "/gambarmenu/tentang.png");
-        }
     }
-
 }

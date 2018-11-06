@@ -31,6 +31,10 @@ public class lahan extends javax.swing.JFrame {
 //            this.nameplayer.setText(a);
 //        }
 //    }
+    public JLabel notif1(){
+        return nair1;
+    }
+    
     public JButton getToko() {
         return b_toko;
     }
@@ -263,6 +267,7 @@ public class lahan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        nair1 = new javax.swing.JLabel();
         jg1_6 = new javax.swing.JLabel();
         jg2_6 = new javax.swing.JLabel();
         jg3_6 = new javax.swing.JLabel();
@@ -344,6 +349,10 @@ public class lahan extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/alatx.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 650, 60, 40));
+
+        nair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/notif air.png"))); // NOI18N
+        nair1.setToolTipText("");
+        jPanel1.add(nair1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, -1, -1));
 
         jg1_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambarlahan/jg1.png"))); // NOI18N
         jPanel1.add(jg1_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 630, -1, 40));
@@ -713,6 +722,7 @@ public class lahan extends javax.swing.JFrame {
     private javax.swing.JLabel jg3_4;
     private javax.swing.JLabel jg3_5;
     private javax.swing.JLabel jg3_6;
+    private javax.swing.JLabel nair1;
     private javax.swing.JLabel nameplayer;
     private javax.swing.JLabel pd1_1;
     private javax.swing.JLabel pd1_2;
