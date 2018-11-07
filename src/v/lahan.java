@@ -8,7 +8,6 @@ package v;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-
 public class lahan extends javax.swing.JFrame {
 
     /**
@@ -19,9 +18,49 @@ public class lahan extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
     }
 
-    public JButton getBtnAir() {
-        return btnAir;
+    public JButton bibit() {
+        return bibit;
     }
+    public JButton alat_bahan() {
+        return alat_bahan;
+    }
+
+    public JButton bibit_padi() {
+        return bibit_padi;
+    }
+
+    public JButton bibit_jagung() {
+        return bibit_jagung;
+    }
+
+    public JButton bibit_tebu() {
+        return bibit_tebu;
+    }
+    public JLabel bar_bibit() {
+        return bar_bibit;
+    }
+    
+    public JLabel bar_alatBahan() {
+        return bar_alatBahan;
+    }
+    
+    public JButton pestisida() {
+        return b_pestisida;
+    }
+
+    public JButton pupuk() {
+        return b_pupuk;
+    }
+
+    public JButton alatsiram() {
+        return b_alatsrm;
+    }
+
+    public JButton sabit() {
+        return b_sabit;
+    }
+
+   
 
     public JButton getBtnKembali() {
         return btnKembali;
@@ -58,15 +97,19 @@ public class lahan extends javax.swing.JFrame {
     public JLabel getLblJagung() {
         return lblBibitJagung;
     }
+
     public JLabel getLblPadi() {
         return lblBibitPadi;
     }
+
     public JLabel getLblTebu() {
         return lblBibitTebu;
     }
+
     public JLabel getLblPestisida() {
         return lblPestisida;
     }
+
     public JLabel getLblPupuk() {
         return lblPupuk;
     }
@@ -94,9 +137,6 @@ public class lahan extends javax.swing.JFrame {
     public JLabel getLblNotif5() {
         return lblNotif5;
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,13 +153,23 @@ public class lahan extends javax.swing.JFrame {
         lblNotif2 = new javax.swing.JLabel();
         lblNotif1 = new javax.swing.JLabel();
         lblNotif = new javax.swing.JLabel();
-        btnAir = new javax.swing.JButton();
-        btnKotak6 = new javax.swing.JButton();
-        btnKotak5 = new javax.swing.JButton();
-        btnKotak4 = new javax.swing.JButton();
-        btnKotak3 = new javax.swing.JButton();
         btnKotak2 = new javax.swing.JButton();
+        btnKotak3 = new javax.swing.JButton();
+        btnKotak4 = new javax.swing.JButton();
+        btnKotak5 = new javax.swing.JButton();
+        btnKotak6 = new javax.swing.JButton();
         btnKotak1 = new javax.swing.JButton();
+        alat_bahan = new javax.swing.JButton();
+        b_sabit = new javax.swing.JButton();
+        b_pestisida = new javax.swing.JButton();
+        b_alatsrm = new javax.swing.JButton();
+        b_pupuk = new javax.swing.JButton();
+        bar_alatBahan = new javax.swing.JLabel();
+        bibit_jagung = new javax.swing.JButton();
+        bibit_tebu = new javax.swing.JButton();
+        bibit_padi = new javax.swing.JButton();
+        bar_bibit = new javax.swing.JLabel();
+        bibit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -140,6 +190,8 @@ public class lahan extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -151,80 +203,87 @@ public class lahan extends javax.swing.JFrame {
         lblNotif5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotif5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png"))); // NOI18N
         lblNotif5.setToolTipText("");
-        getContentPane().add(lblNotif5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 500, -1, -1));
+        getContentPane().add(lblNotif5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, -1, -1));
 
         lblNotif4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotif4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png"))); // NOI18N
         lblNotif4.setToolTipText("");
-        getContentPane().add(lblNotif4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, -1, -1));
+        getContentPane().add(lblNotif4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, -1, -1));
 
         lblNotif3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotif3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png"))); // NOI18N
         lblNotif3.setToolTipText("");
-        getContentPane().add(lblNotif3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, -1, -1));
+        getContentPane().add(lblNotif3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 480, -1, -1));
 
         lblNotif2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotif2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png"))); // NOI18N
         lblNotif2.setToolTipText("");
-        getContentPane().add(lblNotif2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, -1, -1));
+        getContentPane().add(lblNotif2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 300, -1, -1));
 
         lblNotif1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotif1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png"))); // NOI18N
         lblNotif1.setToolTipText("");
-        getContentPane().add(lblNotif1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, -1, -1));
+        getContentPane().add(lblNotif1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 300, -1, -1));
 
         lblNotif.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png"))); // NOI18N
         lblNotif.setToolTipText("");
-        getContentPane().add(lblNotif, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
+        getContentPane().add(lblNotif, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
 
-        btnAir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/tblSiram.png"))); // NOI18N
-        btnAir.setBorderPainted(false);
-        btnAir.setContentAreaFilled(false);
-        btnAir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAir.setFocusable(false);
-        btnAir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/tblSiram hover.png"))); // NOI18N
-        getContentPane().add(btnAir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 510, -1, 210));
-
-        btnKotak6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/ns3.png"))); // NOI18N
-        btnKotak6.setBorderPainted(false);
-        btnKotak6.setContentAreaFilled(false);
-        btnKotak6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnKotak6.setFocusable(false);
-        btnKotak6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnKotak6, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, -1, -1));
-
-        btnKotak5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/ns3.png"))); // NOI18N
-        btnKotak5.setBorderPainted(false);
-        btnKotak5.setContentAreaFilled(false);
-        btnKotak5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnKotak5.setFocusable(false);
-        btnKotak5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnKotak5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
-
-        btnKotak4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/ns3.png"))); // NOI18N
-        btnKotak4.setBorderPainted(false);
-        btnKotak4.setContentAreaFilled(false);
-        btnKotak4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnKotak4.setFocusable(false);
-        btnKotak4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnKotak4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
-
-        btnKotak3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/ns3.png"))); // NOI18N
-        btnKotak3.setBorderPainted(false);
-        btnKotak3.setContentAreaFilled(false);
-        btnKotak3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnKotak3.setFocusable(false);
-        btnKotak3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnKotak3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 290, -1, -1));
-
-        btnKotak2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/ns3.png"))); // NOI18N
         btnKotak2.setBorderPainted(false);
         btnKotak2.setContentAreaFilled(false);
         btnKotak2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKotak2.setDefaultCapable(false);
         btnKotak2.setFocusable(false);
+        btnKotak2.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnKotak2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnKotak2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnKotak2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, -1, -1));
+        btnKotak2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnKotak2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 330, 110, 180));
+
+        btnKotak3.setBorderPainted(false);
+        btnKotak3.setContentAreaFilled(false);
+        btnKotak3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKotak3.setDefaultCapable(false);
+        btnKotak3.setFocusable(false);
+        btnKotak3.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnKotak3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnKotak3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnKotak3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnKotak3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 330, 110, 180));
+
+        btnKotak4.setBorderPainted(false);
+        btnKotak4.setContentAreaFilled(false);
+        btnKotak4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKotak4.setDefaultCapable(false);
+        btnKotak4.setFocusable(false);
+        btnKotak4.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnKotak4.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnKotak4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnKotak4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnKotak4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 110, 180));
+
+        btnKotak5.setBorderPainted(false);
+        btnKotak5.setContentAreaFilled(false);
+        btnKotak5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKotak5.setDefaultCapable(false);
+        btnKotak5.setFocusable(false);
+        btnKotak5.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnKotak5.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnKotak5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnKotak5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnKotak5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 480, 110, 180));
+
+        btnKotak6.setBorderPainted(false);
+        btnKotak6.setContentAreaFilled(false);
+        btnKotak6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnKotak6.setDefaultCapable(false);
+        btnKotak6.setFocusable(false);
+        btnKotak6.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnKotak6.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnKotak6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnKotak6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnKotak6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 480, 110, 180));
 
         btnKotak1.setBorderPainted(false);
         btnKotak1.setContentAreaFilled(false);
@@ -236,6 +295,64 @@ public class lahan extends javax.swing.JFrame {
         btnKotak1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnKotak1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(btnKotak1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, 110, 180));
+
+        alat_bahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alat2.png"))); // NOI18N
+        alat_bahan.setBorderPainted(false);
+        alat_bahan.setContentAreaFilled(false);
+        getContentPane().add(alat_bahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 570, -1, -1));
+
+        b_sabit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/sabit.png"))); // NOI18N
+        b_sabit.setBorderPainted(false);
+        b_sabit.setContentAreaFilled(false);
+        b_sabit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/sabit1.png"))); // NOI18N
+        getContentPane().add(b_sabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 90, -1));
+
+        b_pestisida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/pest.png"))); // NOI18N
+        b_pestisida.setBorderPainted(false);
+        b_pestisida.setContentAreaFilled(false);
+        b_pestisida.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/pest1.png"))); // NOI18N
+        getContentPane().add(b_pestisida, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 90, -1));
+
+        b_alatsrm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alatktl.png"))); // NOI18N
+        b_alatsrm.setBorderPainted(false);
+        b_alatsrm.setContentAreaFilled(false);
+        b_alatsrm.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alatktl1.png"))); // NOI18N
+        getContentPane().add(b_alatsrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 90, -1));
+
+        b_pupuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alatppk.png"))); // NOI18N
+        b_pupuk.setBorderPainted(false);
+        b_pupuk.setContentAreaFilled(false);
+        b_pupuk.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alatppk1.png"))); // NOI18N
+        getContentPane().add(b_pupuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 90, -1));
+
+        bar_alatBahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alataa_1.png"))); // NOI18N
+        getContentPane().add(bar_alatBahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
+
+        bibit_jagung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitjg.png"))); // NOI18N
+        bibit_jagung.setBorderPainted(false);
+        bibit_jagung.setContentAreaFilled(false);
+        bibit_jagung.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitjg1.png"))); // NOI18N
+        getContentPane().add(bibit_jagung, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 90, -1));
+
+        bibit_tebu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/tebu.png"))); // NOI18N
+        bibit_tebu.setBorderPainted(false);
+        bibit_tebu.setContentAreaFilled(false);
+        bibit_tebu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/tebu1.png"))); // NOI18N
+        getContentPane().add(bibit_tebu, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 90, -1));
+
+        bibit_padi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitpd.png"))); // NOI18N
+        bibit_padi.setBorderPainted(false);
+        bibit_padi.setContentAreaFilled(false);
+        bibit_padi.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitpd1_1.png"))); // NOI18N
+        getContentPane().add(bibit_padi, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 90, -1));
+
+        bar_bibit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitaa_1.png"))); // NOI18N
+        getContentPane().add(bar_bibit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
+
+        bibit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibit2.png"))); // NOI18N
+        bibit.setBorderPainted(false);
+        bibit.setContentAreaFilled(false);
+        getContentPane().add(bibit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/lhn.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, -1, -1));
@@ -313,6 +430,12 @@ public class lahan extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bgjmlh.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 100, -1, -1));
 
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alatx.png"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitx.png"))); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 660, -1, 20));
+
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/xxx.png"))); // NOI18N
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 700));
 
@@ -325,7 +448,7 @@ public class lahan extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* If Nimbibit_bibit_tebujagungbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
@@ -349,7 +472,7 @@ public class lahan extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display bibit_padithe form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new lahan().setVisible(true);
@@ -358,8 +481,18 @@ public class lahan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alat_bahan;
+    private javax.swing.JButton b_alatsrm;
+    private javax.swing.JButton b_pestisida;
+    private javax.swing.JButton b_pupuk;
+    private javax.swing.JButton b_sabit;
+    private javax.swing.JLabel bar_alatBahan;
+    private javax.swing.JLabel bar_bibit;
     private javax.swing.JLabel bg;
-    private javax.swing.JButton btnAir;
+    private javax.swing.JButton bibit;
+    private javax.swing.JButton bibit_jagung;
+    private javax.swing.JButton bibit_padi;
+    private javax.swing.JButton bibit_tebu;
     private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnKotak1;
     private javax.swing.JButton btnKotak2;
@@ -371,6 +504,8 @@ public class lahan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
