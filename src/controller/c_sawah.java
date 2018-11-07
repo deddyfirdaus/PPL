@@ -97,7 +97,6 @@ public class c_sawah {
         vlahan.getBtnKotak6().addActionListener(new kotak6Action());
         vlahan.alatsiram().addActionListener(new airAction());
 
-
         vlahan.bibit_jagung().addMouseListener(new pilihbibit());
         vlahan.bibit_padi().addMouseListener(new pilihbibit());
 
@@ -345,6 +344,41 @@ public class c_sawah {
                     statusTime3[0] = 0;
                 }
             }
+            if (idbibit == 3) {
+                if (statusKotak[0] == 1) {//kosong
+                    if (bibittebu > 0) {
+                        ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/tb1.png");
+                        statusKotak[0] = 2;
+                        bibittebu -= 1;
+                        try {
+                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
+                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
+
+                    }
+                } else if (statusKotak[0] == 3) {//tumbuh
+                    ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[0] = 1;
+                    statusSiram[0] = false;
+                    statusTime1[0] = 0;
+                    statusTime2[0] = 0;
+                    statusTime3[0] = 0;
+                } else if (statusKotak[0] == 4) {//siap panen
+                    ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[0] = 1;
+                    statusSiram[0] = false;
+                    statusTime1[0] = 0;
+                    statusTime2[0] = 0;
+                    statusTime3[0] = 0;
+                }
+            }
 
         }
     }
@@ -400,6 +434,40 @@ public class c_sawah {
                         try {
                             mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
                             vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
+
+                    }
+                } else if (statusKotak[1] == 3) {//tumbuh 
+                    ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[1] = 1;
+                    statusSiram[1] = false;
+                    statusTime1[1] = 0;
+                    statusTime2[1] = 0;
+                    statusTime3[1] = 0;
+                } else if (statusKotak[1] == 4) {//siap panen
+                    ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[1] = 1;
+                    statusSiram[1] = false;
+                    statusTime1[1] = 0;
+                    statusTime2[1] = 0;
+                    statusTime3[1] = 0;
+                }
+            }
+            if (idbibit == 3) {
+                if (statusKotak[1] == 1) {//kosong
+                    if (bibittebu > 0) {
+                        ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/tb1.png");
+                        statusKotak[1] = 2;
+                        bibittebu -= 1;
+                        try {
+                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
+                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
                         } catch (SQLException ex) {
                             Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -507,6 +575,41 @@ public class c_sawah {
                     statusTime3[2] = 0;
                 }
             }
+            if (idbibit == 3) {
+                if (statusKotak[2] == 1) {//kosong
+                    if (bibittebu > 0) {
+                        ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/tb1.png");
+                        statusKotak[2] = 2;
+                        bibittebu -= 1;
+                        try {
+                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
+                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
+
+                    }
+                } else if (statusKotak[2] == 3) {//tumbuh 
+                    ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[2] = 1;
+                    statusSiram[2] = false;
+                    statusTime1[2] = 0;
+                    statusTime2[2] = 0;
+                    statusTime3[2] = 0;
+                } else if (statusKotak[2] == 4) {//siap panen
+                    ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[2] = 1;
+                    statusSiram[2] = false;
+                    statusTime1[2] = 0;
+                    statusTime2[2] = 0;
+                    statusTime3[2] = 0;
+                }
+            }
 
         }
 
@@ -563,6 +666,40 @@ public class c_sawah {
                         try {
                             mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
                             vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
+
+                    }
+                } else if (statusKotak[3] == 3) {//tumbuh 
+                    ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[3] = 1;
+                    statusSiram[3] = false;
+                    statusTime1[3] = 0;
+                    statusTime2[3] = 0;
+                    statusTime3[3] = 0;
+                } else if (statusKotak[3] == 4) {//siap panen
+                    ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[3] = 1;
+                    statusSiram[3] = false;
+                    statusTime1[3] = 0;
+                    statusTime2[3] = 0;
+                    statusTime3[3] = 0;
+                }
+            }
+            if (idbibit == 3) {
+                if (statusKotak[3] == 1) {//kosong
+                    if (bibittebu > 0) {
+                        ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/tb1.png");
+                        statusKotak[3] = 2;
+                        bibittebu -= 1;
+                        try {
+                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
+                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
                         } catch (SQLException ex) {
                             Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -673,6 +810,42 @@ public class c_sawah {
                     statusTime3[4] = 0;
                 }
             }
+            if (idbibit == 3) {
+                if (statusKotak[4] == 1) {//kosong
+                    if (bibittebu > 0) {
+                        ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/tb1.png");
+
+                        statusKotak[4] = 2;
+                        bibittebu -= 1;
+                        try {
+                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
+                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
+
+                    }
+                } else if (statusKotak[4] == 3) {//tumbuh 
+                    ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[4] = 1;
+                    statusSiram[4] = false;
+                    statusTime1[4] = 0;
+                    statusTime2[4] = 0;
+                    statusTime3[4] = 0;
+                } else if (statusKotak[4] == 4) {//siap panen
+                    ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[4] = 1;
+                    statusSiram[4] = false;
+                    statusTime1[4] = 0;
+                    statusTime2[4] = 0;
+                    statusTime3[4] = 0;
+                }
+            }
 
         }
 
@@ -729,6 +902,40 @@ public class c_sawah {
                         try {
                             mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
                             vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
+
+                    }
+                } else if (statusKotak[5] == 3) {//tumbuh 
+                    ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
+
+                    statusKotak[5] = 1;
+                    statusSiram[5] = false;
+                    statusTime1[5] = 0;
+                    statusTime2[5] = 0;
+                    statusTime3[5] = 0;
+                } else if (statusKotak[5] == 4) {//siap panen
+                    ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
+                    statusKotak[5] = 1;
+                    statusSiram[5] = false;
+                    statusTime1[5] = 0;
+                    statusTime2[5] = 0;
+                    statusTime3[5] = 0;
+                }
+            }
+            if (idbibit == 3) {
+                if (statusKotak[5] == 1) {//kosong
+                    if (bibittebu > 0) {
+                        ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/tb1.png");
+                        statusKotak[5] = 2;
+                        bibittebu -= 1;
+                        try {
+                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
+                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
 
                         } catch (SQLException ex) {
                             Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
@@ -844,6 +1051,42 @@ public class c_sawah {
                                 if (statusTime3[i] == 40) {
                                     statusKotak[i] = 4;
                                     ubahIcon(btnKotak[i], "/gambar/isisawah/jg3.png");
+                                }
+                            }
+                        }
+                    }
+                    if (idbibit == 3) {
+                        bibittebu = mAset.getBibitTebu(mAset.cekIdPlayer(username));
+                        for (int i = 0; i < statusKotak.length; i++) {
+                            if (statusKotak[i] == 2) {
+                                statusTime1[i] += 1;
+                                if (statusTime1[i] == 5) {
+                                    notif[i].setVisible(true);
+                                    notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
+                                    vlahan.bar_alatBahan().setVisible(true);
+                                    vlahan.pestisida().setVisible(true);
+                                    vlahan.alatsiram().setVisible(true);
+                                    vlahan.sabit().setVisible(true);
+                                    vlahan.pupuk().setVisible(true);
+//                                    vlahan.getBtnAir().setEnabled(true);
+
+                                }
+                            }
+                            if (statusSiram[i]) {
+
+                                statusTime2[i] += 1;
+                                if (statusTime2[i] == 2) {
+                                    notif[i].setVisible(false);
+                                } else if (statusTime2[i] == 20) {
+                                    statusKotak[i] = 3;
+                                    ubahIcon(btnKotak[i], "/gambar/isisawah/tb2.png");
+                                }
+                            }
+                            if (statusKotak[i] == 3) {
+                                statusTime3[i] += 1;
+                                if (statusTime3[i] == 40) {
+                                    statusKotak[i] = 4;
+                                    ubahIcon(btnKotak[i], "/gambar/isisawah/tb3.png");
                                 }
                             }
                         }
