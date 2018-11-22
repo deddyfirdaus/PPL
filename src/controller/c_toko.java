@@ -12,153 +12,119 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-//import m.m_aset;
-//import m.m_marning;
-//import v.home;
-//import v.tokoPenjualanProduk;
+import model.m_aset;
+import model.m_koperasi;
+import v.koperasi;
+import v.koperasi;
+import v.map;
+
 
 /**
  *
- * @author Rangora
+ *
  */
 public class c_toko {
 
-//    private tokoPenjualanProduk vToko;
-//    private home vHome;
+//    private koperasi vKoperasi;
+    private koperasi vKoperasi;
+    private map vMap;
 //    private m_marning mMarning;
-//    private m_aset mAset;
+    private m_koperasi mKoperasi;
+    private m_aset mAset;
     private String username;
-    private boolean jual;
-    private int marningA;
-    private int marningB;
-    private int marningC;
-    private int empingA;
-    private int empingB;
-    private int empingC;
-    private int totalMarning;
-    private int totalEmping;
+    private int jagung;
+    private int jmljagung;
+
     private int koin;
-//    private time jualThread;
-    private Random random = new Random();
+    private int dptkoin;
+    private int hrgajgng=4000;
+    private int jumlah;
 
-//    public c_toko(home vHome, String username) throws SQLException {
-//        vToko = new tokoPenjualanProduk();
-//        mMarning = new m_marning();
-//        mAset = new m_aset();
-//        this.vHome = vHome;
-//        this.username = username;
-//        koin = mAset.getKoin(mAset.cekIdPlayer(username));
-//        marningA = mMarning.getMarningA(mMarning.cekIdPlayer(username));
-//        marningB = mMarning.getMarningB(mMarning.cekIdPlayer(username));
-//        marningC = mMarning.getMarningC(mMarning.cekIdPlayer(username));
-//        totalMarning = marningA + marningB + marningC;
-//        empingA = mMarning.getEmpingA(mMarning.cekIdPlayer(username));
-//        empingB = mMarning.getEmpingB(mMarning.cekIdPlayer(username));
-//        empingC = mMarning.getEmpingC(mMarning.cekIdPlayer(username));
-//        totalEmping = empingA + empingB + empingC;
-//
-//        vToko.getBtnKembali().addActionListener(new kembaliAction());
-//        vToko.getBtnMulaiJual().addActionListener(new mulaiJualAction());
-//
-//        jualThread = new time();
-//        jualThread.start();
-//    }
 
-//    private class mulaiJualAction implements ActionListener {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            try {
-//                if (jual == false) {
-//                    if (mMarning.getMarningA(mMarning.cekIdPlayer(username)) == 0 && mMarning.getMarningB(mMarning.cekIdPlayer(username)) == 0 && 
-//                            mMarning.getMarningC(mMarning.cekIdPlayer(username)) == 0) {
-//                        JOptionPane.showMessageDialog(vToko, "Stok Marning Habis");
-//                    } else {
-//                        jual = true;
-//                        vToko.getBtnMulaiJual().setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isitoko/tblBukaToko.png")));
-//                        vToko.getBtnMulaiJual().setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isitoko/tblBukaTokoHover.png")));
-//                    }
-//                } else {
-//                    jual = false;
-//                    vToko.getBtnMulaiJual().setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isitoko/tblTutupToko.png")));
-//                    vToko.getBtnMulaiJual().setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isitoko/tblTutupTokoHover.png")));
-//                }
-//            } catch (SQLException ex) {
-//                Logger.getLogger(c_toko.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
 
-//    private class kembaliAction implements ActionListener {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            vToko.setVisible(false);
-//            vHome.setVisible(true);
-//        }
-//    }
+    public c_toko(map vMap, String username) throws SQLException {
 
-//    private class time extends Thread {
-//
-//        @Override
-//        public void run() {
-//            while (true) {
-//                try {
-//                    Thread.sleep(3000);
-//                    if (jual) {
-//                        if (mMarning.getMarningA(mMarning.cekIdPlayer(username)) > 0) {
-//                            if (random.nextInt(3) == 1) {
-//                                marningA = mMarning.getMarningA(mMarning.cekIdPlayer(username))- 1;
-//                                koin += 70;
-//                                mMarning.updateMarningA(marningA, mMarning.cekIdPlayer(username));
-//                            }
-//                        }
-//                        if (mMarning.getMarningB(mMarning.cekIdPlayer(username)) > 0) {
-//                            if (random.nextInt(5) == 1) {
-//                                marningB =mMarning.getMarningB(mMarning.cekIdPlayer(username))- 1;
-//                                koin += 70;
-//                                mMarning.updateMarningB(marningB, mMarning.cekIdPlayer(username));
-//                            }
-//                        }
-//                        if (mMarning.getMarningC(mMarning.cekIdPlayer(username)) > 0) {
-//                            if (random.nextInt(10) == 1) {
-//                                marningC =mMarning.getMarningC(mMarning.cekIdPlayer(username))- 1;
-//                                koin += 70;
-//                                mMarning.updateMarningC(marningC, mMarning.cekIdPlayer(username));
-//                            }
-//                        }
-//                        if (mMarning.getMarningA(mMarning.cekIdPlayer(username)) == 0 && mMarning.getMarningB(mMarning.cekIdPlayer(username)) == 0 && 
-//                            mMarning.getMarningC(mMarning.cekIdPlayer(username)) == 0) {
-//                            jual = false;
-//                            vToko.getBtnMulaiJual().setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isitoko/tblTutupToko.png")));
-//                            vToko.getBtnMulaiJual().setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isitoko/tblTutupTokoHover.png")));
-//                        }
-//                        mAset.updateKoin(koin, mAset.cekIdPlayer(username));
-//                        vHome.getLblMarning().setText((mMarning.getMarningA(mMarning.cekIdPlayer(username)) + mMarning.getMarningB(mMarning.cekIdPlayer(username))
-//                                + mMarning.getMarningC(mMarning.cekIdPlayer(username))) + "");
-//                        vHome.getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
-//                        System.out.println("marning a= " + marningA);
-//                        System.out.println("marning b= " + marningB);
-//                        System.out.println("marning c= " + marningC);
-//                    }
-//                    totalMarning = marningA + marningB + marningC;
-//                    vToko.getLblMarning().setText(totalMarning + "");
-//                    vToko.getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
-//                } catch (InterruptedException ex) {
-//                    Logger.getLogger(c_toko.class.getName()).log(Level.SEVERE, null, ex);
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(c_toko.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
-//    }
+        vKoperasi = new koperasi();
+        mAset = new m_aset();
+        mKoperasi = new m_koperasi();
+        this.vMap = vMap;
+        this.username = username;
+        koin = mAset.getKoin(mAset.cekIdPlayer(username));
 
-    public void marning (int m1, int m2, int m3){
-        marningA = m1;
-        marningB = m2;
-        marningC = m3;
+//
+        vKoperasi.getBtnKembali().addActionListener(new kembaliAction());
+        vKoperasi.getBtnTambah().addActionListener(new tambahAction());
+        vKoperasi.getBtnKurang().addActionListener(new kurangAction());
+        vKoperasi.getBtnJual().addActionListener(new jualAction());
     }
-//    public tokoPenjualanProduk getView() {
-//        return vToko;
-//    }
+
+    private class jualAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if (JOptionPane.showConfirmDialog(vMap, "Yakin ingin menjual Jagung?", null, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+                jmljagung = jagung - jumlah;
+            
+                dptkoin = koin + (hrgajgng*jumlah);
+                
+                try {
+                    mKoperasi.updateJagung(jmljagung, mKoperasi.cekIdPlayer(username));
+                    mAset.updateKoin(dptkoin, mAset.cekIdPlayer(username));
+                    vKoperasi.getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username))+"");
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_toko.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }
+
+    }
+
+    private class tambahAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            try {
+                jagung = mKoperasi.getJagung(mKoperasi.cekIdPlayer(username));
+            } catch (SQLException ex) {
+                Logger.getLogger(c_toko.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (jumlah < jagung) {
+                jumlah++;
+                vKoperasi.getLblJumlah().setText(jumlah + "");
+            } else {
+                JOptionPane.showMessageDialog(vMap, "max pembelian jagung : " + jagung + " jagung");
+            }
+        }
+
+    }
+
+    private class kurangAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if (jumlah > 1) {
+                jumlah--;
+                vKoperasi.getLblJumlah().setText(jumlah + "");
+            } else {
+                JOptionPane.showMessageDialog(vMap, "min pembelian jagung : 1");
+            }
+        }
+
+    }
+
+
+    private class kembaliAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vKoperasi.setVisible(false);
+            vMap.setVisible(true);
+        }
+    }
+
+    public koperasi getView() {
+        return vKoperasi;
+    }
 }

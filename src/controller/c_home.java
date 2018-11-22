@@ -29,6 +29,7 @@ public class c_home {
         this.username = username;
         vMap.getBtnKoperasi().addActionListener(new tokotaniAction());
         vMap.getBtnSawah1().addActionListener(new sawahAction());
+        vMap.getBtnToko().addActionListener(new tokoAction());
         vMap.getBtnLogOut().addActionListener(new logOutAction());;
         vMap.getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
         vMap.getLabelUsername().setText(username);
@@ -91,6 +92,34 @@ public class c_home {
             tokotani.getView().setVisible(true);
             vMap.setVisible(false);
         }
+    }
+    
+     private class tokoAction implements ActionListener {
+//
+        private c_toko toko;
+
+        public tokoAction() throws SQLException {
+            toko = new c_toko(vMap, username);
+            toko.getView().setVisible(false);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                int jumlah=1;
+                toko.getView().getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
+                toko.getView().getLblJumlah().setText(jumlah+"");
+//                koperasi.getView().getLblMarning().setText((mMarning.getMarningA(mMarning.cekIdPlayer(username))
+//                        + mMarning.getMarningB(mMarning.cekIdPlayer(username)) + mMarning.getMarningC(mMarning.cekIdPlayer(username))) + "");
+//                koperasi.marning(mMarning.getMarningA(mMarning.cekIdPlayer(username)), mMarning.getMarningB(mMarning.cekIdPlayer(username)), 
+//                        mMarning.getMarningC(mMarning.cekIdPlayer(username)));
+            } catch (SQLException ex) {
+                Logger.getLogger(c_home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            toko.getView().setVisible(true);
+            vMap.setVisible(false);
+        }
+//
     }
 
     public map getView() {

@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.m_aset;
+import model.m_koperasi;
 import model.m_player;
 import v.about;
 import v.createname;
@@ -30,6 +31,7 @@ public class c_menu {
     private load vLoad;
     private m_player mPlayer;
     private m_aset mAset;
+    private m_koperasi mKoperasi;
 
 
     public c_menu() throws SQLException {
@@ -41,6 +43,7 @@ public class c_menu {
         exit = new keluargame();
         mPlayer = new m_player();
         mAset = new m_aset();
+        mKoperasi = new m_koperasi();
         vMenu.getBtnMulai().addActionListener(new mulaiAction());
         cn.getOK().addActionListener(new okAction());;
         vLoad.getBtnOk().addActionListener(new okActionLoad());
@@ -154,6 +157,7 @@ public class c_menu {
                 } else {
                     mPlayer.insertUsername(cn.getNama().getText());
                     mAset.insertAset();
+                    mKoperasi.insertPenjualan();
                     JOptionPane.showMessageDialog(cn, "Username " + cn.getNama().getText() + " berhasil dibuat");
                     new c_home(cn.getNama().getText());
                     cn.dispose();

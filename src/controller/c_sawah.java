@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import model.m_aset;
+import model.m_koperasi;
 
 //import v.home;
 import v.lahan;
@@ -41,6 +42,7 @@ public class c_sawah {
 //    private sawah vSawah;
 //    private home vHome;
     private m_aset mAset;
+    private m_koperasi mKoperasi;
     private JButton btnKotak[] = new JButton[6];
     private int idbutton[] = {0, 1, 2, 3, 4, 5, 6};
     private JLabel notif[] = new JLabel[6];
@@ -59,6 +61,7 @@ public class c_sawah {
     private int bibitpadi;
     private int bibittebu;
     private int pestisida;
+    private int jagung;
     private int pupuk;
     int idlahan;
 //    private int bibit;
@@ -75,6 +78,7 @@ public class c_sawah {
         vlahan = new lahan();
 
         mAset = new m_aset();
+        mKoperasi = new m_koperasi();
         this.vMap = vMap;
         this.username = username;
         btnKotak[0] = vlahan.getBtnKotak1();
@@ -113,7 +117,6 @@ public class c_sawah {
 //        vlahan.bibit_jagung().addMouseListener(new pilihbibit());
 //        vlahan.bibit_padi().addMouseListener(new pilihbibit());
 //        vlahan.bibit_tebu().addMouseListener(new pilihbibit());
-
         vlahan.alat_bahan().addMouseListener(new klikAlatBahan());
         vlahan.bibit().addMouseListener(new klikBibit());
 
@@ -123,7 +126,6 @@ public class c_sawah {
 //        vlahan.getBtnKotak4().setEnabled(false);
 //        vlahan.getBtnKotak5().setEnabled(false);
 //        vlahan.getBtnKotak6().setEnabled(false);
-
         vlahan.bar_alatBahan().setVisible(false);
         vlahan.bar_bibit().setVisible(false);
         vlahan.bibit_padi().setVisible(false);
@@ -185,7 +187,6 @@ public class c_sawah {
 //        }
 //
 //    }
-
     private class klikBibit implements MouseListener {
 
         public klikBibit() {
@@ -333,7 +334,12 @@ public class c_sawah {
                 statusTime3[0] = 0;
             } else if (statusKotak[0] == 4) {//siap panen
                 ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
-
+                jagung += random.nextInt((7 - 5) + 1) + 5;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[0] = 1;
                 statusSiram[0] = false;
                 statusTime1[0] = 0;
@@ -450,7 +456,12 @@ public class c_sawah {
                 statusTime3[1] = 0;
             } else if (statusKotak[1] == 4) {//siap panen
                 ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
-
+                jagung += random.nextInt((7 - 5) + 1) + 5;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[1] = 1;
                 statusSiram[1] = false;
                 statusTime1[1] = 0;
@@ -566,7 +577,12 @@ public class c_sawah {
                 statusTime3[2] = 0;
             } else if (statusKotak[2] == 4) {//siap panen
                 ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
-
+                jagung += random.nextInt((7 - 5) + 1) + 5;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[2] = 1;
                 statusSiram[2] = false;
                 statusTime1[2] = 0;
@@ -684,7 +700,12 @@ public class c_sawah {
                 statusTime3[3] = 0;
             } else if (statusKotak[3] == 4) {//siap panen
                 ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
-
+                jagung += random.nextInt((7 - 5) + 1) + 5;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[3] = 1;
                 statusSiram[3] = false;
                 statusTime1[3] = 0;
@@ -804,7 +825,12 @@ public class c_sawah {
                 statusTime3[4] = 0;
             } else if (statusKotak[4] == 4) {//siap panen
                 ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
-
+                jagung += random.nextInt((7 - 5) + 1) + 5;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[4] = 1;
                 statusSiram[4] = false;
                 statusTime1[4] = 0;
@@ -928,6 +954,12 @@ public class c_sawah {
                 statusTime3[5] = 0;
             } else if (statusKotak[5] == 4) {//siap panen
                 ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
+                jagung += random.nextInt((7 - 5) + 1) + 5;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[5] = 1;
                 statusSiram[5] = false;
                 statusTime1[5] = 0;
