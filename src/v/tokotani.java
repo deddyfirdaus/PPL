@@ -90,7 +90,7 @@ public class tokotani extends javax.swing.JFrame {
         btnItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnItem1.setFocusable(false);
         btnItem1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(btnItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 80, 50));
+        getContentPane().add(btnItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 70, 40));
 
         btnItem2.setBorderPainted(false);
         btnItem2.setContentAreaFilled(false);
@@ -98,7 +98,7 @@ public class tokotani extends javax.swing.JFrame {
         btnItem2.setFocusable(false);
         btnItem2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnItem2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(btnItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 70, 40));
+        getContentPane().add(btnItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 70, 40));
 
         btnItem3.setBorderPainted(false);
         btnItem3.setContentAreaFilled(false);
@@ -106,7 +106,7 @@ public class tokotani extends javax.swing.JFrame {
         btnItem3.setFocusable(false);
         btnItem3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnItem3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(btnItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 350, 90, 40));
+        getContentPane().add(btnItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, 90, 40));
 
         btnItem4.setBorderPainted(false);
         btnItem4.setContentAreaFilled(false);
@@ -115,7 +115,7 @@ public class tokotani extends javax.swing.JFrame {
         btnItem4.setFocusable(false);
         btnItem4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnItem4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(btnItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, 80, 40));
+        getContentPane().add(btnItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 70, 40));
 
         btnItem5.setBorderPainted(false);
         btnItem5.setContentAreaFilled(false);
@@ -124,7 +124,7 @@ public class tokotani extends javax.swing.JFrame {
         btnItem5.setFocusable(false);
         btnItem5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnItem5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(btnItem5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 600, 80, 40));
+        getContentPane().add(btnItem5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 430, 80, 40));
 
         lblKoin.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         lblKoin.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -133,7 +133,7 @@ public class tokotani extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isiKoperasi/view.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isiKoperasi/tokotani.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 700));
 
         pack();

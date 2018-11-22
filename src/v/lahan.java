@@ -105,6 +105,13 @@ public class lahan extends javax.swing.JFrame {
     public JLabel getLblTebu() {
         return lblBibitTebu;
     }
+    public JLabel getPadi() {
+        return jLabel8;
+    }
+
+    public JLabel getTebu() {
+        return jLabel10;
+    }
 
     public JLabel getLblPestisida() {
         return lblPestisida;
@@ -191,7 +198,6 @@ public class lahan extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -387,54 +393,51 @@ public class lahan extends javax.swing.JFrame {
         lblBibitPadi.setFont(new java.awt.Font("Bw Surco DEMO", 1, 14)); // NOI18N
         lblBibitPadi.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblBibitPadi.setText("Padi");
-        getContentPane().add(lblBibitPadi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 120, 120, 40));
+        getContentPane().add(lblBibitPadi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 290, 120, 40));
 
         lblBibitTebu.setFont(new java.awt.Font("Bw Surco DEMO", 1, 14)); // NOI18N
         lblBibitTebu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblBibitTebu.setText("Tebu");
-        getContentPane().add(lblBibitTebu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 240, 120, 40));
+        getContentPane().add(lblBibitTebu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 350, 120, 40));
 
         lblPestisida.setFont(new java.awt.Font("Bw Surco DEMO", 1, 14)); // NOI18N
         lblPestisida.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPestisida.setText("Pestisida");
-        getContentPane().add(lblPestisida, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 300, 120, 40));
+        getContentPane().add(lblPestisida, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 170, 120, 40));
 
         lblPupuk.setFont(new java.awt.Font("Bw Surco DEMO", 1, 14)); // NOI18N
         lblPupuk.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPupuk.setText("Pupuk");
-        getContentPane().add(lblPupuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 360, 120, 40));
+        getContentPane().add(lblPupuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 230, 120, 40));
 
         lblBibitJagung.setFont(new java.awt.Font("Bw Surco DEMO", 1, 14)); // NOI18N
         lblBibitJagung.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblBibitJagung.setText("Jagung");
-        getContentPane().add(lblBibitJagung, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 180, 120, 40));
+        getContentPane().add(lblBibitJagung, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 120, 40));
 
         statusBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/rp.png"))); // NOI18N
         getContentPane().add(statusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/jmlhjagung.png"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 180, 128, 44));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 128, 44));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/jmlhtebu.png"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 240, 128, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 350, 128, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/jmlhpest.png"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 300, 128, 44));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 170, 128, 44));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/jmlhpupuk.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 360, 128, 44));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 230, 128, 44));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/jmlhpadi.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 120, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 290, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bgjmlh.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 100, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alatx.png"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitx.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 660, -1, 20));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/xxx.png"))); // NOI18N
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 700));
@@ -504,7 +507,6 @@ public class lahan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

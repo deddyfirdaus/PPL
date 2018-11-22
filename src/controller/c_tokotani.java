@@ -38,8 +38,8 @@ public class c_tokotani {
 
         vToko.getBtnKembali().addActionListener(new kembaliAction());
         vToko.getBtnItem1().addActionListener(new bibitJagungAction());
-        vToko.getBtnItem2().addActionListener(new bibitPadiAction());
-        vToko.getBtnItem3().addActionListener(new bibitTebuAction());
+        vToko.getBtnItem2().setVisible(false);
+        vToko.getBtnItem3().setVisible(false);
         vToko.getBtnItem4().addActionListener(new pupukAction());
         vToko.getBtnItem5().addActionListener(new pestisidaAction());
     }
