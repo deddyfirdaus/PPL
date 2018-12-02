@@ -21,16 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import model.m_aset;
 import model.m_koperasi;
-
-//import v.home;
 import v.lahan;
 import v.map;
-//import v.sawah;
 
-/**
- *
- * @author Rangora
- */
+
 public class c_sawah {
 
     Timer waktu;
@@ -39,40 +33,27 @@ public class c_sawah {
     private static int sektb = 0;
     private map vMap;
     private lahan vlahan;
-//    private sawah vSawah;
-//    private home vHome;
     private m_aset mAset;
     private m_koperasi mKoperasi;
     private JButton btnKotak[] = new JButton[6];
-    private int idbutton[] = {0, 1, 2, 3, 4, 5, 6};
     private JLabel notif[] = new JLabel[6];
     private int statusKotak[] = {1, 1, 1, 1, 1, 1};
     private int statusTime1[] = {0, 0, 0, 0, 0, 0};
     private int statusTime2[] = {0, 0, 0, 0, 0, 0};
     private int statusTime3[] = {0, 0, 0, 0, 0, 0};
-    private int statusTimepd1[] = {0, 0, 0, 0, 0, 0};
-    private int statusTimepd2[] = {0, 0, 0, 0, 0, 0};
-    private int statusTimepd3[] = {0, 0, 0, 0, 0, 0};
-    private int statusTimejg1[] = {0, 0, 0, 0, 0, 0};
-    private int statusTimejg2[] = {0, 0, 0, 0, 0, 0};
-    private int statusTimejg3[] = {0, 0, 0, 0, 0, 0};
+    private int statusTime4[] = {0, 0, 0, 0, 0, 0};
+    private int statusTime5[] = {0, 0, 0, 0, 0, 0};
     private boolean statusSiram[] = {false, false, false, false, false, false};
+    private boolean statusPupuk[] = {false, false, false, false, false, false};
+    private boolean statusPenyakit[] = {false, false, false, false, false, false};
+    private boolean penyakit[] = {false, false, false, false, false, false};
+    private boolean sakit;
     private int bibitjagung;
-    private int bibitpadi;
-    private int bibittebu;
     private int pestisida;
     private int jagung;
     private int pupuk;
-    int idlahan;
-//    private int bibit;
-//    private int jagung;
-    private int idbibit;
-    private int detikSiram = 0;
-    private boolean detikSiram1 = false;
     private String username;
     private Random random = new Random();
-
-    private Thread t;
 
     public c_sawah(map vMap, String username) throws SQLException {
         vlahan = new lahan();
@@ -100,10 +81,9 @@ public class c_sawah {
         }
 
         bibitjagung = mAset.getBibitJagung(mAset.cekIdPlayer(username));
-        bibitpadi = mAset.getBibitPadi(mAset.cekIdPlayer(username));
-        bibittebu = mAset.getBibitTebu(mAset.cekIdPlayer(username));
         pestisida = mAset.getPestisida(mAset.cekIdPlayer(username));
         pupuk = mAset.getPupuk(mAset.cekIdPlayer(username));
+        jagung = mKoperasi.getJagung(mKoperasi.cekIdPlayer(username));
 
         vlahan.getBtnKembali().addActionListener(new kembaliAction());
         vlahan.getBtnKotak1().addActionListener(new kotak1Action());
@@ -113,19 +93,12 @@ public class c_sawah {
         vlahan.getBtnKotak5().addActionListener(new kotak5Action());
         vlahan.getBtnKotak6().addActionListener(new kotak6Action());
         vlahan.alatsiram().addActionListener(new airAction());
+        vlahan.pupuk().addActionListener(new pupukAction());
+        vlahan.pestisida().addActionListener(new pestisidaAction());
 
-//        vlahan.bibit_jagung().addMouseListener(new pilihbibit());
-//        vlahan.bibit_padi().addMouseListener(new pilihbibit());
-//        vlahan.bibit_tebu().addMouseListener(new pilihbibit());
         vlahan.alat_bahan().addMouseListener(new klikAlatBahan());
         vlahan.bibit().addMouseListener(new klikBibit());
 
-//        vlahan.getBtnKotak1().setEnabled(false);
-//        vlahan.getBtnKotak2().setEnabled(false);
-//        vlahan.getBtnKotak3().setEnabled(false);
-//        vlahan.getBtnKotak4().setEnabled(false);
-//        vlahan.getBtnKotak5().setEnabled(false);
-//        vlahan.getBtnKotak6().setEnabled(false);
         vlahan.bar_alatBahan().setVisible(false);
         vlahan.bar_bibit().setVisible(false);
         vlahan.bibit_padi().setVisible(false);
@@ -140,53 +113,9 @@ public class c_sawah {
         vlahan.getLblTebu().setVisible(false);
         vlahan.getPadi().setVisible(false);
         vlahan.getTebu().setVisible(false);
-//        t = new time();
-//        t.start();
+
     }
 
-//    private class pilihbibit implements MouseListener {
-//
-//        @Override
-//        public void mouseClicked(MouseEvent me) {
-//            idbibit = 0;
-//            vlahan.getBtnKotak1().setEnabled(true);
-//            vlahan.getBtnKotak2().setEnabled(true);
-//            vlahan.getBtnKotak3().setEnabled(true);
-//            vlahan.getBtnKotak4().setEnabled(true);
-//            vlahan.getBtnKotak5().setEnabled(true);
-//            vlahan.getBtnKotak6().setEnabled(true);
-//            if (vlahan.bibit_padi() == me.getSource()) {
-//                idbibit = 1;
-//                System.out.println("bibitpadi");
-//                System.out.println(idbibit);
-//            } else if (vlahan.bibit_jagung() == me.getSource()) {
-//                idbibit = 2;
-//                System.out.println("bibitjagung");
-//                System.out.println(idbibit);
-//            } else if (vlahan.bibit_tebu() == me.getSource()) {
-//                idbibit = 3;
-//                System.out.println("bibittebu");
-//            }
-//
-//        }
-//
-//        @Override
-//        public void mousePressed(MouseEvent me) {
-//        }
-//
-//        @Override
-//        public void mouseReleased(MouseEvent me) {
-//        }
-//
-//        @Override
-//        public void mouseEntered(MouseEvent me) {
-//        }
-//
-//        @Override
-//        public void mouseExited(MouseEvent me) {
-//        }
-//
-//    }
     private class klikBibit implements MouseListener {
 
         public klikBibit() {
@@ -276,7 +205,6 @@ public class c_sawah {
             for (int i = 0; i < statusKotak.length; i++) {
                 if (statusKotak[i] == 2 && statusSiram[i] == false) {
                     statusSiram[i] = true;
-//                    detikSiram1 = true;
                     notif[i].setVisible(true);
                     notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/siram.gif")));
                     //set gif menyiram
@@ -286,7 +214,71 @@ public class c_sawah {
                     vlahan.alatsiram().setVisible(false);
                     vlahan.sabit().setVisible(false);
                     vlahan.pupuk().setVisible(false);
-//                    vlahan.getBtnAir().setEnabled(false);
+
+                }
+            }
+        }
+    }
+
+    private class pupukAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < statusKotak.length; i++) {
+                if (statusKotak[i] == 3 && statusPupuk[i] == false) {
+                    if (pupuk > 0) {
+                        pupuk -= 1;
+                        try {
+                            mAset.updatePupuk(pupuk, mAset.cekIdPlayer(username));
+                            vlahan.getLblPupuk().setText(mAset.getPupuk(mAset.cekIdPlayer(username)) + "");
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        statusPupuk[i] = true;
+
+                        vlahan.bar_alatBahan().setVisible(false);
+                        vlahan.pestisida().setVisible(false);
+                        vlahan.alatsiram().setVisible(false);
+                        vlahan.sabit().setVisible(false);
+                        vlahan.pupuk().setVisible(false);
+
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya pupuk");
+                    }
+
+                }
+            }
+        }
+    }
+
+    private class pestisidaAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < statusKotak.length; i++) {
+                if (statusPenyakit[i] == true) {
+                    if (pestisida > 0) {
+                        pestisida -= 1;
+                        try {
+                            mAset.updatePestisida(pestisida, mAset.cekIdPlayer(username));
+                            vlahan.getLblPestisida().setText(mAset.getPestisida(mAset.cekIdPlayer(username)) + "");
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        statusPenyakit[i] = false;
+                        notif[i].setVisible(false);
+
+                        vlahan.bar_alatBahan().setVisible(false);
+                        vlahan.pestisida().setVisible(false);
+                        vlahan.alatsiram().setVisible(false);
+                        vlahan.sabit().setVisible(false);
+                        vlahan.pupuk().setVisible(false);
+
+                    } else {
+                        JOptionPane.showMessageDialog(vMap, "Tidak punya pestisida");
+                    }
 
                 }
             }
@@ -302,14 +294,13 @@ public class c_sawah {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            vlahan.bar_bibit().setVisible(false);
-//            vlahan.bibit_padi().setVisible(false);
-//            vlahan.bibit_jagung().setVisible(false);
-//            vlahan.bibit_tebu().setVisible(false);
-//            if (idbibit == 1) {
+
             waktu();
             if (statusKotak[0] == 1) {//kosong
                 if (bibitjagung > 0) {
+                    sakit = Math.random() < 0.5;
+                    penyakit[0] = sakit;
+                    System.out.println("penyakit1"+penyakit[0]);
                     ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/jg1.png");
                     statusKotak[0] = 2;
                     bibitjagung -= 1;
@@ -325,15 +316,23 @@ public class c_sawah {
 
                 }
             } else if (statusKotak[0] == 3) {//tumbuh
-                ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
-
+                ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/www.png");
+                jagung += random.nextInt((3 - 2) + 1) + 2;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[0] = 1;
                 statusSiram[0] = false;
+                statusPupuk[0] = false;
                 statusTime1[0] = 0;
                 statusTime2[0] = 0;
                 statusTime3[0] = 0;
-            } else if (statusKotak[0] == 4) {//siap panen
-                ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
+                statusTime4[0] = 0;
+                statusTime5[0] = 0;
+            } else if (statusKotak[0] == 5) {//siap panen
+                ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
                 try {
                     mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
@@ -342,81 +341,14 @@ public class c_sawah {
                 }
                 statusKotak[0] = 1;
                 statusSiram[0] = false;
+                statusPupuk[0] = false;
                 statusTime1[0] = 0;
                 statusTime2[0] = 0;
                 statusTime3[0] = 0;
+                statusTime4[0] = 0;
+                statusTime5[0] = 0;
             }
-//            }
-//            if (idbibit == 2) {
-//                if (statusKotak[0] == 1) {//kosong
-//                    if (bibitjagung > 0) {
-//                        ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/jg1.png");
-//                        statusKotak[0] = 2;
-//                        bibitjagung -= 1;
-//                        try {
-//                            mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
-//                            vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[0] == 3) {//tumbuh
-//                    ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[0] = 1;
-//                    statusSiram[0] = false;
-//                    statusTime1[0] = 0;
-//                    statusTime2[0] = 0;
-//                    statusTime3[0] = 0;
-//                } else if (statusKotak[0] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[0] = 1;
-//                    statusSiram[0] = false;
-//                    statusTime1[0] = 0;
-//                    statusTime2[0] = 0;
-//                    statusTime3[0] = 0;
-//                }
-//            }
-//            if (idbibit == 3) {
-//                if (statusKotak[0] == 1) {//kosong
-//                    if (bibittebu > 0) {
-//                        ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/tb1.png");
-//                        statusKotak[0] = 2;
-//                        bibittebu -= 1;
-//                        try {
-//                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
-//                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[0] == 3) {//tumbuh
-//                    ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[0] = 1;
-//                    statusSiram[0] = false;
-//                    statusTime1[0] = 0;
-//                    statusTime2[0] = 0;
-//                    statusTime3[0] = 0;
-//                } else if (statusKotak[0] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[0] = 1;
-//                    statusSiram[0] = false;
-//                    statusTime1[0] = 0;
-//                    statusTime2[0] = 0;
-//                    statusTime3[0] = 0;
-//                }
-//            }
+//            
 
         }
     }
@@ -425,15 +357,14 @@ public class c_sawah {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            vlahan.bar_bibit().setVisible(false);
-//            vlahan.bibit_padi().setVisible(false);
-//            vlahan.bibit_jagung().setVisible(false);
-//            vlahan.bibit_tebu().setVisible(false);
-//            if (idbibit == 1) {
+
             waktu();
             if (statusKotak[1] == 1) {//kosong
                 if (bibitjagung > 0) {
+                    sakit = Math.random() < 0.5;
                     ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/jg1.png");
+                    penyakit[1] = sakit;
+                    System.out.println("penyakit2"+penyakit[1]);
                     statusKotak[1] = 2;
                     bibitjagung -= 1;
                     try {
@@ -447,15 +378,23 @@ public class c_sawah {
 
                 }
             } else if (statusKotak[1] == 3) {//tumbuh 
-                ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
-
+                ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/www.png");
+                jagung += random.nextInt((3 - 2) + 1) + 2;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[1] = 1;
                 statusSiram[1] = false;
+                statusPupuk[1] = false;
                 statusTime1[1] = 0;
                 statusTime2[1] = 0;
                 statusTime3[1] = 0;
-            } else if (statusKotak[1] == 4) {//siap panen
-                ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
+                statusTime4[1] = 0;
+                statusTime5[1] = 0;
+            } else if (statusKotak[1] == 5) {//siap panen
+                ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
                 try {
                     mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
@@ -464,79 +403,13 @@ public class c_sawah {
                 }
                 statusKotak[1] = 1;
                 statusSiram[1] = false;
+                statusPupuk[1] = false;
                 statusTime1[1] = 0;
                 statusTime2[1] = 0;
                 statusTime3[1] = 0;
+                statusTime4[1] = 0;
+                statusTime5[1] = 0;
             }
-//            }
-//            if (idbibit == 2) {
-//                if (statusKotak[1] == 1) {//kosong
-//                    if (bibitjagung > 0) {
-//                        ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/jg1.png");
-//                        statusKotak[1] = 2;
-//                        bibitjagung -= 1;
-//                        try {
-//                            mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
-//                            vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[1] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[1] = 1;
-//                    statusSiram[1] = false;
-//                    statusTime1[1] = 0;
-//                    statusTime2[1] = 0;
-//                    statusTime3[1] = 0;
-//                } else if (statusKotak[1] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[1] = 1;
-//                    statusSiram[1] = false;
-//                    statusTime1[1] = 0;
-//                    statusTime2[1] = 0;
-//                    statusTime3[1] = 0;
-//                }
-//            }
-//            if (idbibit == 3) {
-//                if (statusKotak[1] == 1) {//kosong
-//                    if (bibittebu > 0) {
-//                        ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/tb1.png");
-//                        statusKotak[1] = 2;
-//                        bibittebu -= 1;
-//                        try {
-//                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
-//                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[1] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[1] = 1;
-//                    statusSiram[1] = false;
-//                    statusTime1[1] = 0;
-//                    statusTime2[1] = 0;
-//                    statusTime3[1] = 0;
-//                } else if (statusKotak[1] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[1] = 1;
-//                    statusSiram[1] = false;
-//                    statusTime1[1] = 0;
-//                    statusTime2[1] = 0;
-//                    statusTime3[1] = 0;
-//                }
-//            }
 
         }
     }
@@ -545,14 +418,13 @@ public class c_sawah {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            vlahan.bar_bibit().setVisible(false);
-//            vlahan.bibit_padi().setVisible(false);
-//            vlahan.bibit_jagung().setVisible(false);
-//            vlahan.bibit_tebu().setVisible(false);
-//            if (idbibit == 1) {
+
             waktu();
             if (statusKotak[2] == 1) {//kosong
                 if (bibitjagung > 0) {
+                    sakit = Math.random() < 0.5;
+                    penyakit[2] = sakit;
+                    System.out.println("penyakit3"+penyakit[2]);
                     ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/jg1.png");
                     statusKotak[2] = 2;
                     bibitjagung -= 1;
@@ -568,15 +440,23 @@ public class c_sawah {
 
                 }
             } else if (statusKotak[2] == 3) {//tumbuh 
-                ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
-
+                ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/www.png");
+                jagung += random.nextInt((3 - 2) + 1) + 2;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[2] = 1;
                 statusSiram[2] = false;
+                statusPupuk[2] = false;
                 statusTime1[2] = 0;
                 statusTime2[2] = 0;
                 statusTime3[2] = 0;
-            } else if (statusKotak[2] == 4) {//siap panen
-                ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
+                statusTime4[2] = 0;
+                statusTime5[2] = 0;
+            } else if (statusKotak[2] == 5) {//siap panen
+                ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
                 try {
                     mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
@@ -585,81 +465,13 @@ public class c_sawah {
                 }
                 statusKotak[2] = 1;
                 statusSiram[2] = false;
+                statusPupuk[2] = false;
                 statusTime1[2] = 0;
                 statusTime2[2] = 0;
                 statusTime3[2] = 0;
+                statusTime4[2] = 0;
+                statusTime5[2] = 0;
             }
-//            }
-//            if (idbibit == 2) {
-//                if (statusKotak[2] == 1) {//kosong
-//                    if (bibitjagung > 0) {
-//                        ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/jg1.png");
-//                        statusKotak[2] = 2;
-//                        bibitjagung -= 1;
-//                        try {
-//                            mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
-//                            vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[2] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[2] = 1;
-//                    statusSiram[2] = false;
-//                    statusTime1[2] = 0;
-//                    statusTime2[2] = 0;
-//                    statusTime3[2] = 0;
-//                } else if (statusKotak[2] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[2] = 1;
-//                    statusSiram[2] = false;
-//                    statusTime1[2] = 0;
-//                    statusTime2[2] = 0;
-//                    statusTime3[2] = 0;
-//                }
-//            }
-//            if (idbibit == 3) {
-//                if (statusKotak[2] == 1) {//kosong
-//                    if (bibittebu > 0) {
-//                        ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/tb1.png");
-//                        statusKotak[2] = 2;
-//                        bibittebu -= 1;
-//                        try {
-//                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
-//                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[2] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[2] = 1;
-//                    statusSiram[2] = false;
-//                    statusTime1[2] = 0;
-//                    statusTime2[2] = 0;
-//                    statusTime3[2] = 0;
-//                } else if (statusKotak[2] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[2] = 1;
-//                    statusSiram[2] = false;
-//                    statusTime1[2] = 0;
-//                    statusTime2[2] = 0;
-//                    statusTime3[2] = 0;
-//                }
-//            }
 
         }
 
@@ -669,14 +481,13 @@ public class c_sawah {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            vlahan.bar_bibit().setVisible(false);
-//            vlahan.bibit_padi().setVisible(false);
-//            vlahan.bibit_jagung().setVisible(false);
-//            vlahan.bibit_tebu().setVisible(false);
-//            if (idbibit == 1) {
+
             waktu();
             if (statusKotak[3] == 1) {//kosong
                 if (bibitjagung > 0) {
+                    sakit = Math.random() < 0.5;
+                    penyakit[3] = sakit;
+                    System.out.println("penyakit4"+penyakit[3]);
                     ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/jg1.png");
                     statusKotak[3] = 2;
                     bibitjagung -= 1;
@@ -691,15 +502,23 @@ public class c_sawah {
 
                 }
             } else if (statusKotak[3] == 3) {//tumbuh 
-                ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
-
+                ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/www.png");
+                jagung += random.nextInt((3 - 2) + 1) + 2;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[3] = 1;
                 statusSiram[3] = false;
+                statusPupuk[3] = false;
                 statusTime1[3] = 0;
                 statusTime2[3] = 0;
                 statusTime3[3] = 0;
-            } else if (statusKotak[3] == 4) {//siap panen
-                ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
+                statusTime4[3] = 0;
+                statusTime5[3] = 0;
+            } else if (statusKotak[3] == 5) {//siap panen
+                ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
                 try {
                     mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
@@ -708,80 +527,13 @@ public class c_sawah {
                 }
                 statusKotak[3] = 1;
                 statusSiram[3] = false;
+                statusPupuk[3] = false;
                 statusTime1[3] = 0;
                 statusTime2[3] = 0;
                 statusTime3[3] = 0;
+                statusTime4[3] = 0;
+                statusTime5[3] = 0;
             }
-//            }
-//            if (idbibit == 2) {
-//                if (statusKotak[3] == 1) {//kosong
-//                    if (bibitjagung > 0) {
-//                        ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/jg1.png");
-//                        statusKotak[3] = 2;
-//                        bibitjagung -= 1;
-//                        try {
-//                            mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
-//                            vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[3] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[3] = 1;
-//                    statusSiram[3] = false;
-//                    statusTime1[3] = 0;
-//                    statusTime2[3] = 0;
-//                    statusTime3[3] = 0;
-//                } else if (statusKotak[3] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[3] = 1;
-//                    statusSiram[3] = false;
-//                    statusTime1[3] = 0;
-//                    statusTime2[3] = 0;
-//                    statusTime3[3] = 0;
-//                }
-//            }
-//            if (idbibit == 3) {
-//                if (statusKotak[3] == 1) {//kosong
-//                    if (bibittebu > 0) {
-//                        ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/tb1.png");
-//                        statusKotak[3] = 2;
-//                        bibittebu -= 1;
-//                        try {
-//                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
-//                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[3] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[3] = 1;
-//                    statusSiram[3] = false;
-//                    statusTime1[3] = 0;
-//                    statusTime2[3] = 0;
-//                    statusTime3[3] = 0;
-//                } else if (statusKotak[3] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[3] = 1;
-//                    statusSiram[3] = false;
-//                    statusTime1[3] = 0;
-//                    statusTime2[3] = 0;
-//                    statusTime3[3] = 0;
-//                }
-//            }
-
         }
 
     }
@@ -790,19 +542,14 @@ public class c_sawah {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            vlahan.bar_bibit().setVisible(false);
-//            vlahan.bibit_padi().setVisible(false);
-//            vlahan.bibit_jagung().setVisible(false);
-//            vlahan.bibit_tebu().setVisible(false);
-//            idlahan = 5;
-//            if (idbibit == 1) {
-////                waktupadi(idlahan);
-//                System.out.println(idlahan);
             waktu();
+
             if (statusKotak[4] == 1) {//kosong
                 if (bibitjagung > 0) {
                     ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/jg1.png");
-
+                    sakit = Math.random() < 0.5;
+                    penyakit[4] = sakit;
+                    System.out.println("penyakit5"+penyakit[4]);
                     statusKotak[4] = 2;
                     bibitjagung -= 1;
                     try {
@@ -816,15 +563,24 @@ public class c_sawah {
 
                 }
             } else if (statusKotak[4] == 3) {//tumbuh 
-                ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
-
+                ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/www.png");
+                jagung += random.nextInt((3 - 2) + 1) + 2;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[4] = 1;
                 statusSiram[4] = false;
+                statusPupuk[4] = false;
                 statusTime1[4] = 0;
                 statusTime2[4] = 0;
                 statusTime3[4] = 0;
-            } else if (statusKotak[4] == 4) {//siap panen
-                ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
+                statusTime4[4] = 0;
+                statusTime5[4] = 0;
+            } else if (statusKotak[4] == 5) {//siap panen
+                ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/www.png");
+
                 jagung += random.nextInt((7 - 5) + 1) + 5;
                 try {
                     mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
@@ -833,84 +589,13 @@ public class c_sawah {
                 }
                 statusKotak[4] = 1;
                 statusSiram[4] = false;
+                statusPupuk[4] = false;
                 statusTime1[4] = 0;
                 statusTime2[4] = 0;
                 statusTime3[4] = 0;
+                statusTime4[4] = 0;
+                statusTime5[4] = 0;
             }
-//            } else if (idbibit == 2) {
-//                waktujagung(idlahan);
-//                if (statusKotak[4] == 1) {//kosong
-//                    if (bibitjagung > 0) {
-//                        ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/jg1.png");
-//
-//                        statusKotak[4] = 2;
-//                        bibitjagung -= 1;
-//                        try {
-//                            mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
-//                            vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[4] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[4] = 1;
-//                    statusSiram[4] = false;
-//                    statusTimejg1[4] = 0;
-//                    statusTimejg2[4] = 0;
-//                    statusTimejg3[4] = 0;
-//                } else if (statusKotak[4] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[4] = 1;
-//                    statusSiram[4] = false;
-//                    statusTimejg1[4] = 0;
-//                    statusTimejg2[4] = 0;
-//                    statusTimejg3[4] = 0;
-//                }
-//            }
-//            if (idbibit == 3) {
-//                if (statusKotak[4] == 1) {//kosong
-//                    if (bibittebu > 0) {
-//                        ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/tb1.png");
-//
-//                        statusKotak[4] = 2;
-//                        bibittebu -= 1;
-//                        try {
-//                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
-//                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[4] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[4] = 1;
-//                    statusSiram[4] = false;
-//                    statusTime1[4] = 0;
-//                    statusTime2[4] = 0;
-//                    statusTime3[4] = 0;
-//                } else if (statusKotak[4] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[4] = 1;
-//                    statusSiram[4] = false;
-//                    statusTime1[4] = 0;
-//                    statusTime2[4] = 0;
-//                    statusTime3[4] = 0;
-//                }
-//            }
-
         }
 
     }
@@ -919,18 +604,13 @@ public class c_sawah {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            vlahan.bar_bibit().setVisible(false);
-//            vlahan.bibit_padi().setVisible(false);
-//            vlahan.bibit_jagung().setVisible(false);
-//            vlahan.bibit_tebu().setVisible(false);
-////            timer();
-//            idlahan = 6;
-//            if (idbibit == 1) {
-//                waktupadi(idlahan);
-//                System.out.println(idlahan);
+
             waktu();
             if (statusKotak[5] == 1) {//kosong
                 if (bibitjagung > 0) {
+                    sakit = Math.random() < 0.5;
+                    penyakit[5] = sakit;
+                    System.out.println("penyakit6"+penyakit[5]);
                     ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/jg1.png");
                     statusKotak[5] = 2;
                     bibitjagung -= 1;
@@ -945,15 +625,21 @@ public class c_sawah {
                     JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
                 }
             } else if (statusKotak[5] == 3) {//tumbuh 
-                ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
-
+                ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/www.png");
+                jagung += random.nextInt((3 - 2) + 1) + 2;
+                try {
+                    mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
+                } catch (SQLException ex) {
+                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 statusKotak[5] = 1;
                 statusSiram[5] = false;
+                statusPupuk[5] = false;
                 statusTime1[5] = 0;
                 statusTime2[5] = 0;
                 statusTime3[5] = 0;
-            } else if (statusKotak[5] == 4) {//siap panen
-                ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
+            } else if (statusKotak[5] == 5) {//siap panen
+                ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
                 try {
                     mKoperasi.updateJagung(jagung, mAset.cekIdPlayer(username));
@@ -962,80 +648,14 @@ public class c_sawah {
                 }
                 statusKotak[5] = 1;
                 statusSiram[5] = false;
+                statusPupuk[5] = false;
                 statusTime1[5] = 0;
                 statusTime2[5] = 0;
                 statusTime3[5] = 0;
+                statusTime4[5] = 0;
+                statusTime5[5] = 0;
             }
-//            } else if (idbibit == 2) {
-//                waktujagung(idlahan);
-//                if (statusKotak[5] == 1) {//kosong
-//                    if (bibitjagung > 0) {
-//                        ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/jg1.png");
-//                        statusKotak[5] = 2;
-//                        bibitjagung -= 1;
-//                        try {
-//                            mAset.updateBibitJagung(bibitjagung, mAset.cekIdPlayer(username));
-//                            vlahan.getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[5] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[5] = 1;
-//                    statusSiram[5] = false;
-//                    statusTimejg1[5] = 0;
-//                    statusTimejg2[5] = 0;
-//                    statusTimejg3[5] = 0;
-//                } else if (statusKotak[5] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
-//                    statusKotak[5] = 1;
-//                    statusSiram[5] = false;
-//                    statusTimejg1[5] = 0;
-//                    statusTimejg2[5] = 0;
-//                    statusTimejg3[5] = 0;
-//                }
-//            }
-//            if (idbibit == 3) {
-//                if (statusKotak[5] == 1) {//kosong
-//                    if (bibittebu > 0) {
-//                        ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/tb1.png");
-//                        statusKotak[5] = 2;
-//                        bibittebu -= 1;
-//                        try {
-//                            mAset.updateBibitTebu(bibittebu, mAset.cekIdPlayer(username));
-//                            vlahan.getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
-//
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(vMap, "Tidak punya bibit");
-//
-//                    }
-//                } else if (statusKotak[5] == 3) {//tumbuh 
-//                    ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
-//
-//                    statusKotak[5] = 1;
-//                    statusSiram[5] = false;
-//                    statusTime1[5] = 0;
-//                    statusTime2[5] = 0;
-//                    statusTime3[5] = 0;
-//                } else if (statusKotak[5] == 4) {//siap panen
-//                    ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/lhn.png");
-//                    statusKotak[5] = 1;
-//                    statusSiram[5] = false;
-//                    statusTime1[5] = 0;
-//                    statusTime2[5] = 0;
-//                    statusTime3[5] = 0;
-//                }
-//            }
-
+//           
         }
 
     }
@@ -1068,26 +688,57 @@ public class c_sawah {
                             vlahan.alatsiram().setVisible(true);
                             vlahan.sabit().setVisible(true);
                             vlahan.pupuk().setVisible(true);
-                            vlahan.sabit().setEnabled(false);
-                            vlahan.pupuk().setEnabled(false);
-                            vlahan.pestisida().setEnabled(false);
 
-//                                    vlahan.getBtnAir().setEnabled(true);
                         }
                     }
                     if (statusSiram[i] == true) {
                         statusTime2[i] += 1;
                         if (statusTime2[i] == 2) {
                             notif[i].setVisible(false);
-                        } else if (statusTime2[i] == 20) {
-                            statusKotak[i] = 3;
+                        } else if (statusTime2[i] == 10) {
                             ubahIcon(btnKotak[i], "/gambar/isisawah/jg2.png");
+                            statusPenyakit[i] = penyakit[i];
+                            System.out.println(statusPenyakit[i]);
+                            statusKotak[i] = 3;
                         }
                     }
-                    if (statusKotak[i] == 3) {
-                        statusTime3[i] += 1;
-                        if (statusTime3[i] == 40) {
+                    if (statusPenyakit[i] == true) {
+                        notif[i].setVisible(true);
+                        notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notifpest.png")));
+                        vlahan.bar_alatBahan().setVisible(true);
+                        vlahan.pestisida().setVisible(true);
+                        vlahan.alatsiram().setVisible(true);
+                        vlahan.sabit().setVisible(true);
+                        vlahan.pupuk().setVisible(true);
+
+                    }
+
+                    if (statusKotak[i] == 3 && statusPenyakit[i] == false) {
+                        statusTime4[i] += 1;
+                        if (statusTime4[i] == 5) {
+                            notif[i].setVisible(true);
+                            notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/pupuk.png")));
+                            vlahan.bar_alatBahan().setVisible(true);
+                            vlahan.pestisida().setVisible(true);
+                            vlahan.alatsiram().setVisible(true);
+                            vlahan.sabit().setVisible(true);
+                            vlahan.pupuk().setVisible(true);
+
+                        }
+                    }
+                    if (statusPupuk[i] == true) {
+                        statusTime5[i] += 1;
+                        if (statusTime5[i] == 2) {
+                            notif[i].setVisible(false);
+                        } else if (statusTime5[i] == 5) {
+
                             statusKotak[i] = 4;
+                        }
+                    }
+                    if (statusKotak[i] == 4) {
+                        statusTime3[i] += 1;
+                        if (statusTime3[i] == 20) {
+                            statusKotak[i] = 5;
                             ubahIcon(btnKotak[i], "/gambar/isisawah/jg3.png");
                         }
                     }
@@ -1098,172 +749,7 @@ public class c_sawah {
         waktu.start();
     }
 
-//    private void waktujagung(int idlhn) {
-//        ActionListener gameTime = new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                for (int i = 0; i < statusKotak.length; i++) {
-//
-//                    if (statusKotak[i] == 2) {
-//                        statusTimejg1[i] += 1;
-//                        if (statusTimejg1[i] == 5) {
-//                            notif[i].setVisible(true);
-//                            notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
-//                            vlahan.bar_alatBahan().setVisible(true);
-//                            vlahan.pestisida().setVisible(true);
-//                            vlahan.alatsiram().setVisible(true);
-//                            vlahan.sabit().setVisible(true);
-//                            vlahan.pupuk().setVisible(true);
-//
-////                                    vlahan.getBtnAir().setEnabled(true);
-//                        }
-//                    }
-//                    if (statusSiram[i] == true) {
-//                        statusTimejg2[i] += 1;
-//                        if (statusTimejg2[i] == 2) {
-//                            notif[i].setVisible(false);
-//                        } else if (statusTimejg2[i] == 20) {
-//                            statusKotak[i] = 3;
-//                            ubahIcon(btnKotak[i], "/gambar/isisawah/jg2.png");
-//                        }
-//                    }
-//                    if (statusKotak[i] == 3) {
-//                        statusTimejg3[i] += 1;
-//                        if (statusTimejg3[i] == 40) {
-//                            statusKotak[i] = 4;
-//                            ubahIcon(btnKotak[i], "/gambar/isisawah/jg3.png");
-//                        }
-//                    }
-//                }
-//            }
-//        };
-//        waktu = new Timer(1000, gameTime);
-//        waktu.start();
-//    }
-//    private class time extends Thread {
-//
-//        @Override
-//        public void run() {
-//            while (true) {
-//                try {
-//                    Thread.sleep(1000);
-//
-//                    if (idbibit == 1) {
-//                        bibitpadi = mAset.getBibitPadi(mAset.cekIdPlayer(username));
-//                        for (int i = 0; i < statusKotak.length; i++) {
-//                            if (statusKotak[i] == 2) {
-//                                statusTime1[i] += 1;
-//                                if (statusTime1[i] == 5) {
-//                                    notif[i].setVisible(true);
-//                                    notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
-//                                    vlahan.bar_alatBahan().setVisible(true);
-//                                    vlahan.pestisida().setVisible(true);
-//                                    vlahan.alatsiram().setVisible(true);
-//                                    vlahan.sabit().setVisible(true);
-//                                    vlahan.pupuk().setVisible(true);
-//
-////                                    vlahan.getBtnAir().setEnabled(true);
-//                                }
-//                            }
-//                            if (statusSiram[i]) {
-//
-//                                statusTime2[i] += 1;
-//                                if (statusTime2[i] == 2) {
-//                                    notif[i].setVisible(false);
-//                                } else if (statusTime2[i] == 10) {
-//                                    statusKotak[i] = 3;
-//                                    ubahIcon(btnKotak[i], "/gambar/isisawah/ns2.png");
-//                                }
-//                            }
-//                            if (statusKotak[i] == 3) {
-//                                statusTime3[i] += 1;
-//                                if (statusTime3[i] == 20) {
-//                                    statusKotak[i] = 4;
-//                                    ubahIcon(btnKotak[i], "/gambar/isisawah/ns3.png");
-//                                }
-//                            }
-//                        }
-//                    } else if (idbibit == 2) {
-//                        bibitjagung = mAset.getBibitJagung(mAset.cekIdPlayer(username));
-//                        for (int i = 0; i < statusKotak.length; i++) {
-//                            if (statusKotak[i] == 2) {
-//                                statusTime1[i] += 1;
-//                                if (statusTime1[i] == 5) {
-//                                    notif[i].setVisible(true);
-//                                    notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
-//                                    vlahan.bar_alatBahan().setVisible(true);
-//                                    vlahan.pestisida().setVisible(true);
-//                                    vlahan.alatsiram().setVisible(true);
-//                                    vlahan.sabit().setVisible(true);
-//                                    vlahan.pupuk().setVisible(true);
-////                                    vlahan.getBtnAir().setEnabled(true);
-//
-//                                }
-//                            }
-//                            if (statusSiram[i]) {
-//
-//                                statusTime2[i] += 1;
-//                                if (statusTime2[i] == 2) {
-//                                    notif[i].setVisible(false);
-//                                } else if (statusTime2[i] == 10) {
-//                                    statusKotak[i] = 3;
-//                                    ubahIcon(btnKotak[i], "/gambar/isisawah/jg2.png");
-//                                }
-//                            }
-//                            if (statusKotak[i] == 3) {
-//                                statusTime3[i] += 1;
-//                                if (statusTime3[i] == 20) {
-//                                    statusKotak[i] = 4;
-//                                    ubahIcon(btnKotak[i], "/gambar/isisawah/jg3.png");
-//                                }
-//                            }
-//                        }
-//                    } else if (idbibit == 3) {
-//                        bibittebu = mAset.getBibitTebu(mAset.cekIdPlayer(username));
-//                        for (int i = 0; i < statusKotak.length; i++) {
-//                            if (statusKotak[i] == 2) {
-//                                statusTime1[i] += 1;
-//                                if (statusTime1[i] == 5) {
-//                                    notif[i].setVisible(true);
-//                                    notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
-//                                    vlahan.bar_alatBahan().setVisible(true);
-//                                    vlahan.pestisida().setVisible(true);
-//                                    vlahan.alatsiram().setVisible(true);
-//                                    vlahan.sabit().setVisible(true);
-//                                    vlahan.pupuk().setVisible(true);
-////                                    vlahan.getBtnAir().setEnabled(true);
-//
-//                                }
-//                            }
-//                            if (statusSiram[i]) {
-//
-//                                statusTime2[i] += 1;
-//                                if (statusTime2[i] == 2) {
-//                                    notif[i].setVisible(false);
-//                                } else if (statusTime2[i] == 10) {
-//                                    statusKotak[i] = 3;
-//                                    ubahIcon(btnKotak[i], "/gambar/isisawah/tb2.png");
-//                                }
-//                            }
-//                            if (statusKotak[i] == 3) {
-//                                statusTime3[i] += 1;
-//                                if (statusTime3[i] == 20) {
-//                                    statusKotak[i] = 4;
-//                                    ubahIcon(btnKotak[i], "/gambar/isisawah/tb3.png");
-//                                }
-//                            }
-//                        }
-//                    }
-//
-//                } catch (InterruptedException ex) {
-//                    Logger.getLogger(c_toko.class.getName()).log(Level.SEVERE, null, ex);
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(c_sawah.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
-//    }
+
     public lahan getView() {
         return vlahan;
     }

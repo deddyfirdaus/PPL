@@ -60,8 +60,6 @@ public class c_home {
             try {
                 sawah.getView().getLblJagung().setText(mAset.getBibitJagung(mAset.cekIdPlayer(username)) + "");
                 sawah.getView().getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
-                sawah.getView().getLblPadi().setText(mAset.getBibitPadi(mAset.cekIdPlayer(username)) + "");
-                sawah.getView().getLblTebu().setText(mAset.getBibitTebu(mAset.cekIdPlayer(username)) + "");
                 sawah.getView().getLblPestisida().setText(mAset.getPestisida(mAset.cekIdPlayer(username)) + "");
                 sawah.getView().getLblPupuk().setText(mAset.getPupuk(mAset.cekIdPlayer(username)) + "");
             } catch (SQLException ex) {
@@ -109,10 +107,7 @@ public class c_home {
                 int jumlah=1;
                 toko.getView().getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
                 toko.getView().getLblJumlah().setText(jumlah+"");
-//                koperasi.getView().getLblMarning().setText((mMarning.getMarningA(mMarning.cekIdPlayer(username))
-//                        + mMarning.getMarningB(mMarning.cekIdPlayer(username)) + mMarning.getMarningC(mMarning.cekIdPlayer(username))) + "");
-//                koperasi.marning(mMarning.getMarningA(mMarning.cekIdPlayer(username)), mMarning.getMarningB(mMarning.cekIdPlayer(username)), 
-//                        mMarning.getMarningC(mMarning.cekIdPlayer(username)));
+
             } catch (SQLException ex) {
                 Logger.getLogger(c_home.class.getName()).log(Level.SEVERE, null, ex);
             }

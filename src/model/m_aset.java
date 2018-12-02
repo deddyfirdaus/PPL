@@ -54,20 +54,7 @@ public class m_aset extends m_function {
         return getDataInt(query);
     }
 
-    public int getJagung(String idUser) throws SQLException {
-        String query = "SELECT jagung FROM `aset` where id_user = " + idUser;
-        return getDataInt(query);
-    }
-
-    public int getGaram(String idUser) throws SQLException {
-        String query = "SELECT garam FROM `aset` where id_user = " + idUser;
-        return getDataInt(query);
-    }
-
-    public int getMinyakGoreng(String idUser) throws SQLException {
-        String query = "SELECT minyak_goreng FROM `aset` where id_user = " + idUser;
-        return getDataInt(query);
-    }
+ 
 
     //==============================================================================================
     public boolean updateKoin(int koin, String idUser) throws SQLException {
@@ -100,20 +87,7 @@ public class m_aset extends m_function {
         return getStatusQuery(query);
     }
 
-    public boolean updateJagung(int jagung, String idUser) throws SQLException {
-        String query = "UPDATE `aset` SET `jagung` = '" + jagung + "' WHERE id_user = " + idUser;
-        return getStatusQuery(query);
-    }
 
-    public boolean updateGaram(int garam, String idUser) throws SQLException {
-        String query = "UPDATE `aset` SET `garam` = '" + garam + "' WHERE id_user = " + idUser;
-        return getStatusQuery(query);
-    }
-
-    public boolean updateMinyakGoreng(int minyakGoreng, String idUser) throws SQLException {
-        String query = "UPDATE `aset` SET `minyak_goreng` = '" + minyakGoreng + "' WHERE id_user = " + idUser;
-        return getStatusQuery(query);
-    }
 
     //===========================================================================
     public int cekId() throws SQLException {
@@ -123,7 +97,7 @@ public class m_aset extends m_function {
 
     public boolean insertAset() throws SQLException {
         int id = cekId();
-        String query = "INSERT INTO `aset` VALUES (" + id + "," + id + ",10000,5,5,5,1,1)";
+        String query = "INSERT INTO `aset` VALUES (" + id + "," + id + ",10000,5,1,1)";
         return getStatusQuery(query);
     }
 

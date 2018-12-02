@@ -61,7 +61,7 @@ public class lahan extends javax.swing.JFrame {
     }
 
    
-
+   
     public JButton getBtnKembali() {
         return btnKembali;
     }

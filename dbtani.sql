@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2018 at 03:31 PM
+-- Generation Time: Dec 02, 2018 at 02:55 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -33,8 +33,6 @@ CREATE TABLE `aset` (
   `id_user` int(11) NOT NULL,
   `koin` int(11) NOT NULL,
   `bibitjagung` int(11) NOT NULL,
-  `bibitpadi` int(11) NOT NULL,
-  `bibittebu` int(11) NOT NULL,
   `pestisida` int(11) NOT NULL,
   `pupuk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,8 +41,29 @@ CREATE TABLE `aset` (
 -- Dumping data for table `aset`
 --
 
-INSERT INTO `aset` (`id_aset`, `id_user`, `koin`, `bibitjagung`, `bibitpadi`, `bibittebu`, `pestisida`, `pupuk`) VALUES
-(1, 1, 10000, 6, 6, 6, 2, 2);
+INSERT INTO `aset` (`id_aset`, `id_user`, `koin`, `bibitjagung`, `pestisida`, `pupuk`) VALUES
+(1, 1, 42740, 24, 10, 9),
+(2, 2, 10000, 4, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penjualan`
+--
+
+CREATE TABLE `penjualan` (
+  `id_penjualan` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `jagung` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `penjualan`
+--
+
+INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `jagung`) VALUES
+(1, 1, 68),
+(2, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -62,7 +81,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`) VALUES
-(1, 'aku');
+(1, 'aku'),
+(2, 'kamu');
 
 --
 -- Indexes for dumped tables
@@ -76,6 +96,12 @@ ALTER TABLE `aset`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD PRIMARY KEY (`id_penjualan`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -86,10 +112,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -19,16 +19,12 @@ import v.koperasi;
 import v.map;
 
 
-/**
- *
- *
- */
+
 public class c_toko {
 
-//    private koperasi vKoperasi;
+
     private koperasi vKoperasi;
     private map vMap;
-//    private m_marning mMarning;
     private m_koperasi mKoperasi;
     private m_aset mAset;
     private String username;
