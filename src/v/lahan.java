@@ -18,27 +18,11 @@ public class lahan extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
     }
 
-    public JButton bibit() {
-        return bibit;
-    }
     public JButton alat_bahan() {
         return alat_bahan;
     }
 
-    public JButton bibit_padi() {
-        return bibit_padi;
-    }
-
-    public JButton bibit_jagung() {
-        return bibit_jagung;
-    }
-
-    public JButton bibit_tebu() {
-        return bibit_tebu;
-    }
-    public JLabel bar_bibit() {
-        return bar_bibit;
-    }
+ 
     
     public JLabel bar_alatBahan() {
         return bar_alatBahan;
@@ -172,11 +156,6 @@ public class lahan extends javax.swing.JFrame {
         b_alatsrm = new javax.swing.JButton();
         b_pupuk = new javax.swing.JButton();
         bar_alatBahan = new javax.swing.JLabel();
-        bibit_jagung = new javax.swing.JButton();
-        bibit_tebu = new javax.swing.JButton();
-        bibit_padi = new javax.swing.JButton();
-        bar_bibit = new javax.swing.JLabel();
-        bibit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -334,32 +313,6 @@ public class lahan extends javax.swing.JFrame {
         bar_alatBahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/alataa_1.png"))); // NOI18N
         getContentPane().add(bar_alatBahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
-        bibit_jagung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitjg.png"))); // NOI18N
-        bibit_jagung.setBorderPainted(false);
-        bibit_jagung.setContentAreaFilled(false);
-        bibit_jagung.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitjg1.png"))); // NOI18N
-        getContentPane().add(bibit_jagung, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 90, -1));
-
-        bibit_tebu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/tebu.png"))); // NOI18N
-        bibit_tebu.setBorderPainted(false);
-        bibit_tebu.setContentAreaFilled(false);
-        bibit_tebu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/tebu1.png"))); // NOI18N
-        getContentPane().add(bibit_tebu, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 90, -1));
-
-        bibit_padi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitpd.png"))); // NOI18N
-        bibit_padi.setBorderPainted(false);
-        bibit_padi.setContentAreaFilled(false);
-        bibit_padi.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitpd1_1.png"))); // NOI18N
-        getContentPane().add(bibit_padi, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 90, -1));
-
-        bar_bibit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibitaa_1.png"))); // NOI18N
-        getContentPane().add(bar_bibit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
-
-        bibit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/bibit2.png"))); // NOI18N
-        bibit.setBorderPainted(false);
-        bibit.setContentAreaFilled(false);
-        getContentPane().add(bibit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, -1, -1));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/lhn.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, -1, -1));
 
@@ -490,12 +443,7 @@ public class lahan extends javax.swing.JFrame {
     private javax.swing.JButton b_pupuk;
     private javax.swing.JButton b_sabit;
     private javax.swing.JLabel bar_alatBahan;
-    private javax.swing.JLabel bar_bibit;
     private javax.swing.JLabel bg;
-    private javax.swing.JButton bibit;
-    private javax.swing.JButton bibit_jagung;
-    private javax.swing.JButton bibit_padi;
-    private javax.swing.JButton bibit_tebu;
     private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnKotak1;
     private javax.swing.JButton btnKotak2;

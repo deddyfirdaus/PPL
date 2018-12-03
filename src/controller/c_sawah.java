@@ -24,7 +24,6 @@ import model.m_koperasi;
 import v.lahan;
 import v.map;
 
-
 public class c_sawah {
 
     Timer waktu;
@@ -43,6 +42,7 @@ public class c_sawah {
     private int statusTime3[] = {0, 0, 0, 0, 0, 0};
     private int statusTime4[] = {0, 0, 0, 0, 0, 0};
     private int statusTime5[] = {0, 0, 0, 0, 0, 0};
+    private int statusTime6[] = {0, 0, 0, 0, 0, 0};
     private boolean statusSiram[] = {false, false, false, false, false, false};
     private boolean statusPupuk[] = {false, false, false, false, false, false};
     private boolean statusPenyakit[] = {false, false, false, false, false, false};
@@ -95,20 +95,18 @@ public class c_sawah {
         vlahan.alatsiram().addActionListener(new airAction());
         vlahan.pupuk().addActionListener(new pupukAction());
         vlahan.pestisida().addActionListener(new pestisidaAction());
+        vlahan.sabit().addActionListener(new sabitAction());
 
         vlahan.alat_bahan().addMouseListener(new klikAlatBahan());
-        vlahan.bibit().addMouseListener(new klikBibit());
+
 
         vlahan.bar_alatBahan().setVisible(false);
-        vlahan.bar_bibit().setVisible(false);
-        vlahan.bibit_padi().setVisible(false);
+
         vlahan.sabit().setVisible(false);
         vlahan.pupuk().setVisible(false);
         vlahan.alatsiram().setVisible(false);
         vlahan.pestisida().setVisible(false);
-        vlahan.bibit_jagung().setVisible(false);
-        vlahan.bibit_tebu().setVisible(false);
-        vlahan.bibit().setVisible(false);
+    
         vlahan.getLblPadi().setVisible(false);
         vlahan.getLblTebu().setVisible(false);
         vlahan.getPadi().setVisible(false);
@@ -116,46 +114,7 @@ public class c_sawah {
 
     }
 
-    private class klikBibit implements MouseListener {
-
-        public klikBibit() {
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 1) {
-                vlahan.bar_bibit().setVisible(true);
-                vlahan.bibit_padi().setVisible(true);
-                vlahan.bibit_jagung().setVisible(true);
-                vlahan.bibit_tebu().setVisible(true);
-            } else if (e.getClickCount() == 2) {
-                vlahan.bar_bibit().setVisible(false);
-                vlahan.bibit_padi().setVisible(false);
-                vlahan.bibit_jagung().setVisible(false);
-                vlahan.bibit_tebu().setVisible(false);
-            }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    }
+  
 
     private class klikAlatBahan implements MouseListener {
 
@@ -214,6 +173,38 @@ public class c_sawah {
                     vlahan.alatsiram().setVisible(false);
                     vlahan.sabit().setVisible(false);
                     vlahan.pupuk().setVisible(false);
+
+                }
+            }
+        }
+    }
+
+    private class sabitAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < statusKotak.length; i++) {
+                if (statusKotak[i] == 6) {
+
+                    notif[i].setVisible(false);
+                    ubahIcon(btnKotak[i], "/gambar/isisawah/www.png");
+
+                    //set gif menyiram
+                    //set label butuh air false
+                    vlahan.bar_alatBahan().setVisible(false);
+                    vlahan.pestisida().setVisible(false);
+                    vlahan.alatsiram().setVisible(false);
+                    vlahan.sabit().setVisible(false);
+                    vlahan.pupuk().setVisible(false);
+                    statusKotak[i] = 1;
+                    statusSiram[i] = false;
+                    statusPupuk[i] = false;
+                    statusTime1[i] = 0;
+                    statusTime2[i] = 0;
+                    statusTime3[i] = 0;
+                    statusTime4[i] = 0;
+                    statusTime5[i] = 0;
+                    statusTime6[i] = 0;
 
                 }
             }
@@ -300,7 +291,7 @@ public class c_sawah {
                 if (bibitjagung > 0) {
                     sakit = Math.random() < 0.5;
                     penyakit[0] = sakit;
-                    System.out.println("penyakit1"+penyakit[0]);
+                    System.out.println("penyakit1" + penyakit[0]);
                     ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/jg1.png");
                     statusKotak[0] = 2;
                     bibitjagung -= 1;
@@ -331,6 +322,7 @@ public class c_sawah {
                 statusTime3[0] = 0;
                 statusTime4[0] = 0;
                 statusTime5[0] = 0;
+                statusTime6[0] = 0;
             } else if (statusKotak[0] == 5) {//siap panen
                 ubahIcon(vlahan.getBtnKotak1(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
@@ -347,6 +339,7 @@ public class c_sawah {
                 statusTime3[0] = 0;
                 statusTime4[0] = 0;
                 statusTime5[0] = 0;
+                statusTime6[0] = 0;
             }
 //            
 
@@ -364,7 +357,7 @@ public class c_sawah {
                     sakit = Math.random() < 0.5;
                     ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/jg1.png");
                     penyakit[1] = sakit;
-                    System.out.println("penyakit2"+penyakit[1]);
+                    System.out.println("penyakit2" + penyakit[1]);
                     statusKotak[1] = 2;
                     bibitjagung -= 1;
                     try {
@@ -393,6 +386,7 @@ public class c_sawah {
                 statusTime3[1] = 0;
                 statusTime4[1] = 0;
                 statusTime5[1] = 0;
+                statusTime6[1] = 0;
             } else if (statusKotak[1] == 5) {//siap panen
                 ubahIcon(vlahan.getBtnKotak2(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
@@ -409,6 +403,7 @@ public class c_sawah {
                 statusTime3[1] = 0;
                 statusTime4[1] = 0;
                 statusTime5[1] = 0;
+                statusTime6[1] = 0;
             }
 
         }
@@ -424,7 +419,7 @@ public class c_sawah {
                 if (bibitjagung > 0) {
                     sakit = Math.random() < 0.5;
                     penyakit[2] = sakit;
-                    System.out.println("penyakit3"+penyakit[2]);
+                    System.out.println("penyakit3" + penyakit[2]);
                     ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/jg1.png");
                     statusKotak[2] = 2;
                     bibitjagung -= 1;
@@ -455,6 +450,7 @@ public class c_sawah {
                 statusTime3[2] = 0;
                 statusTime4[2] = 0;
                 statusTime5[2] = 0;
+                statusTime6[2] = 0;
             } else if (statusKotak[2] == 5) {//siap panen
                 ubahIcon(vlahan.getBtnKotak3(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
@@ -471,6 +467,7 @@ public class c_sawah {
                 statusTime3[2] = 0;
                 statusTime4[2] = 0;
                 statusTime5[2] = 0;
+                statusTime6[2] = 0;
             }
 
         }
@@ -487,7 +484,7 @@ public class c_sawah {
                 if (bibitjagung > 0) {
                     sakit = Math.random() < 0.5;
                     penyakit[3] = sakit;
-                    System.out.println("penyakit4"+penyakit[3]);
+                    System.out.println("penyakit4" + penyakit[3]);
                     ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/jg1.png");
                     statusKotak[3] = 2;
                     bibitjagung -= 1;
@@ -517,6 +514,7 @@ public class c_sawah {
                 statusTime3[3] = 0;
                 statusTime4[3] = 0;
                 statusTime5[3] = 0;
+                statusTime6[3] = 0;
             } else if (statusKotak[3] == 5) {//siap panen
                 ubahIcon(vlahan.getBtnKotak4(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
@@ -533,6 +531,7 @@ public class c_sawah {
                 statusTime3[3] = 0;
                 statusTime4[3] = 0;
                 statusTime5[3] = 0;
+                statusTime6[3] = 0;
             }
         }
 
@@ -549,7 +548,7 @@ public class c_sawah {
                     ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/jg1.png");
                     sakit = Math.random() < 0.5;
                     penyakit[4] = sakit;
-                    System.out.println("penyakit5"+penyakit[4]);
+                    System.out.println("penyakit5" + penyakit[4]);
                     statusKotak[4] = 2;
                     bibitjagung -= 1;
                     try {
@@ -578,6 +577,7 @@ public class c_sawah {
                 statusTime3[4] = 0;
                 statusTime4[4] = 0;
                 statusTime5[4] = 0;
+                statusTime6[4] = 0;
             } else if (statusKotak[4] == 5) {//siap panen
                 ubahIcon(vlahan.getBtnKotak5(), "/gambar/isisawah/www.png");
 
@@ -595,6 +595,7 @@ public class c_sawah {
                 statusTime3[4] = 0;
                 statusTime4[4] = 0;
                 statusTime5[4] = 0;
+                statusTime6[4] = 0;
             }
         }
 
@@ -610,7 +611,7 @@ public class c_sawah {
                 if (bibitjagung > 0) {
                     sakit = Math.random() < 0.5;
                     penyakit[5] = sakit;
-                    System.out.println("penyakit6"+penyakit[5]);
+                    System.out.println("penyakit6" + penyakit[5]);
                     ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/jg1.png");
                     statusKotak[5] = 2;
                     bibitjagung -= 1;
@@ -638,6 +639,9 @@ public class c_sawah {
                 statusTime1[5] = 0;
                 statusTime2[5] = 0;
                 statusTime3[5] = 0;
+                statusTime4[5] = 0;
+                statusTime5[5] = 0;
+                statusTime6[5] = 0;
             } else if (statusKotak[5] == 5) {//siap panen
                 ubahIcon(vlahan.getBtnKotak6(), "/gambar/isisawah/www.png");
                 jagung += random.nextInt((7 - 5) + 1) + 5;
@@ -654,6 +658,7 @@ public class c_sawah {
                 statusTime3[5] = 0;
                 statusTime4[5] = 0;
                 statusTime5[5] = 0;
+                statusTime6[5] = 0;
             }
 //           
         }
@@ -680,6 +685,7 @@ public class c_sawah {
 
                     if (statusKotak[i] == 2) {
                         statusTime1[i] += 1;
+                        System.out.println("1= " + statusTime1[i]);
                         if (statusTime1[i] == 5) {
                             notif[i].setVisible(true);
                             notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
@@ -693,6 +699,7 @@ public class c_sawah {
                     }
                     if (statusSiram[i] == true) {
                         statusTime2[i] += 1;
+                        System.out.println("2= " + statusTime2[i]);
                         if (statusTime2[i] == 2) {
                             notif[i].setVisible(false);
                         } else if (statusTime2[i] == 10) {
@@ -715,7 +722,8 @@ public class c_sawah {
 
                     if (statusKotak[i] == 3 && statusPenyakit[i] == false) {
                         statusTime4[i] += 1;
-                        if (statusTime4[i] == 5) {
+                        System.out.println("4= " + statusTime4[i]);
+                        if (statusTime4[i] == 10) {
                             notif[i].setVisible(true);
                             notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/pupuk.png")));
                             vlahan.bar_alatBahan().setVisible(true);
@@ -728,6 +736,7 @@ public class c_sawah {
                     }
                     if (statusPupuk[i] == true) {
                         statusTime5[i] += 1;
+                        System.out.println("5= " + statusTime5[i]);
                         if (statusTime5[i] == 2) {
                             notif[i].setVisible(false);
                         } else if (statusTime5[i] == 5) {
@@ -737,9 +746,23 @@ public class c_sawah {
                     }
                     if (statusKotak[i] == 4) {
                         statusTime3[i] += 1;
+                        System.out.println("3= " + statusTime3[i]);
                         if (statusTime3[i] == 20) {
                             statusKotak[i] = 5;
                             ubahIcon(btnKotak[i], "/gambar/isisawah/jg3.png");
+                        }
+                    }
+                    if (statusKotak[i] == 5) {
+                        statusTime6[i] += 1;
+                        if(statusTime6 [i] == 20){
+                        statusKotak[i] = 6;
+                        notif[i].setVisible(true);
+                        notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notifsabit.png")));
+                        vlahan.bar_alatBahan().setVisible(true);
+                        vlahan.pestisida().setVisible(true);
+                        vlahan.alatsiram().setVisible(true);
+                        vlahan.sabit().setVisible(true);
+                        vlahan.pupuk().setVisible(true);
                         }
                     }
                 }
@@ -748,7 +771,6 @@ public class c_sawah {
         waktu = new Timer(1000, gameTime);
         waktu.start();
     }
-
 
     public lahan getView() {
         return vlahan;

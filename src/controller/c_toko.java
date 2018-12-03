@@ -29,12 +29,16 @@ public class c_toko {
     private m_aset mAset;
     private String username;
     private int jagung;
-    private int jmljagung;
+    public int jmljagung;
+
+    public int getJmljagung() {
+        return jumlah;
+    }
 
     private int koin;
     private int dptkoin;
     private int hrgajgng=4000;
-    private int jumlah;
+    private int jumlah=1;
 
 
 
@@ -117,6 +121,7 @@ public class c_toko {
         public void actionPerformed(ActionEvent e) {
             vKoperasi.setVisible(false);
             vMap.setVisible(true);
+            jumlah= 1;
         }
     }
 

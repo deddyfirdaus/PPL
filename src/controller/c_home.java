@@ -104,9 +104,8 @@ public class c_home {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                int jumlah=1;
                 toko.getView().getLblKoin().setText(mAset.getKoin(mAset.cekIdPlayer(username)) + "");
-                toko.getView().getLblJumlah().setText(jumlah+"");
+                toko.getView().getLblJumlah().setText(toko.getJmljagung()+"");
 
             } catch (SQLException ex) {
                 Logger.getLogger(c_home.class.getName()).log(Level.SEVERE, null, ex);
