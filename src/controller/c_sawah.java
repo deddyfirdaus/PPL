@@ -756,6 +756,7 @@ public class c_sawah {
                         statusTime6[i] += 1;
                         if(statusTime6 [i] == 20){
                         statusKotak[i] = 6;
+                        ubahIcon(btnKotak[i], "/gambar/isisawah/bosok.png");
                         notif[i].setVisible(true);
                         notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notifsabit.png")));
                         vlahan.bar_alatBahan().setVisible(true);

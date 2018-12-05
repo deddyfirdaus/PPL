@@ -65,6 +65,9 @@ public class map extends javax.swing.JFrame {
         btnGudang = new javax.swing.JButton();
         btnKoperasi = new javax.swing.JButton();
         btnSawah1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,7 +91,7 @@ public class map extends javax.swing.JFrame {
         labelUsername.setFont(new java.awt.Font("Bebas Neue", 0, 30)); // NOI18N
         labelUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelUsername.setText("username");
-        getContentPane().add(labelUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 200, 50));
+        getContentPane().add(labelUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/map/rp.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, -1, -1));
@@ -117,7 +120,16 @@ public class map extends javax.swing.JFrame {
         btnSawah1.setFocusable(false);
         getContentPane().add(btnSawah1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 69, 520, 340));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/map/map.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/map/koperasi.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/map/toko.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/map/lahan.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/map/bg.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 700));
 
         pack();
@@ -168,7 +180,10 @@ public class map extends javax.swing.JFrame {
     private javax.swing.JButton btnSawah1;
     private javax.swing.JButton btnToko;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JLabel lblKoin;
     // End of variables declaration//GEN-END:variables

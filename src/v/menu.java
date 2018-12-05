@@ -26,8 +26,8 @@ public class menu extends javax.swing.JFrame {
         return btnAbout;
     }
 
-    public JButton getBtnLoad() {
-        return btnLoad;
+    public JButton getBtnBantuan() {
+        return btnBantuan;
     }
 
     public JButton getBtnKeluar() {
@@ -62,7 +62,7 @@ public class menu extends javax.swing.JFrame {
         btnKeluar = new javax.swing.JButton();
         btnMulai = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
-        btnLoad = new javax.swing.JButton();
+        btnBantuan = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,13 +95,13 @@ public class menu extends javax.swing.JFrame {
         btnAbout.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mainmenu/tentang1.png"))); // NOI18N
         getContentPane().add(btnAbout, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 320, 90));
 
-        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mainmenu/bantuan.png"))); // NOI18N
-        btnLoad.setBorderPainted(false);
-        btnLoad.setContentAreaFilled(false);
-        btnLoad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLoad.setFocusable(false);
-        btnLoad.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mainmenu/bantuan1.png"))); // NOI18N
-        getContentPane().add(btnLoad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 320, 90));
+        btnBantuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mainmenu/bantuan.png"))); // NOI18N
+        btnBantuan.setBorderPainted(false);
+        btnBantuan.setContentAreaFilled(false);
+        btnBantuan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBantuan.setFocusable(false);
+        btnBantuan.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mainmenu/bantuan1.png"))); // NOI18N
+        getContentPane().add(btnBantuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 320, 90));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/mainmenu/menu.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -147,8 +147,8 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbout;
+    private javax.swing.JButton btnBantuan;
     private javax.swing.JButton btnKeluar;
-    private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnMulai;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

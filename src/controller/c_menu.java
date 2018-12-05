@@ -15,6 +15,11 @@ import model.m_aset;
 import model.m_koperasi;
 import model.m_player;
 import v.about;
+import v.bantuan1;
+import v.bantuan2;
+import v.bantuan3;
+import v.bantuan4;
+import v.bantuan5;
 import v.createname;
 import v.framepilih;
 import v.keluargame;
@@ -23,6 +28,11 @@ import v.menu;
 
 public class c_menu {
 
+    private bantuan1 vB1;
+    private bantuan2 vB2;
+    private bantuan3 vB3;
+    private bantuan4 vB4;
+    private bantuan5 vB5;
     private about vAbout;
     private keluargame exit;
     private createname cn;
@@ -33,11 +43,15 @@ public class c_menu {
     private m_aset mAset;
     private m_koperasi mKoperasi;
 
-
     public c_menu() throws SQLException {
         vAbout = new about();
         vMenu = new menu();
         vLoad = new load();
+        vB1 = new bantuan1();
+        vB2 = new bantuan2();
+        vB3 = new bantuan3();
+        vB4 = new bantuan4();
+        vB5 = new bantuan5();
         fp = new framepilih();
         cn = new createname();
         exit = new keluargame();
@@ -50,47 +64,196 @@ public class c_menu {
         vLoad.getBtnBatal().addActionListener(new batalActionLoad());
         vMenu.getBtnKeluar().addActionListener(new keluarAction());
         vMenu.getBtnAbout().addActionListener(new aboutAction());
+        vMenu.getBtnBantuan().addActionListener(new bantuanAction());
         vAbout.getBtnKembali().addActionListener(new kembaliAction());
+        vB1.getClose().addActionListener(new bantuan1CloseAction());
+        vB2.getClose().addActionListener(new bantuan2CloseAction());
+        vB3.getClose().addActionListener(new bantuan3CloseAction());
+        vB4.getClose().addActionListener(new bantuan4CloseAction());
+        vB5.getClose().addActionListener(new bantuan5CloseAction());
+        vB1.getNext().addActionListener(new bantuan1NextAction());
+        vB2.getNext().addActionListener(new bantuan2NextAction());
+        vB3.getNext().addActionListener(new bantuan3NextAction());
+        vB4.getNext().addActionListener(new bantuan4NextAction());
+        vB2.getBack().addActionListener(new bantuan2BackAction());
+        vB3.getBack().addActionListener(new bantuan3BackAction());
+        vB4.getBack().addActionListener(new bantuan4BackAction());
+        vB5.getBack().addActionListener(new bantuan5BackAction());
         vMenu.setVisible(true);
-        
+
         exit.b_ya().addActionListener(new klikYa());
         exit.b_tidak().addActionListener(new klikTidak());
         fp.b_mulaibaru().addActionListener(new klikMulaibaru());
         fp.b_lanjut().addActionListener(new loadAction());
     }
 
-    private class klikMulaibaru implements ActionListener{
+    private class klikMulaibaru implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
             cn.setVisible(true);
             fp.dispose();
         }
-    
+
     }
-    private class klikYa implements ActionListener{
+
+    private class klikYa implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
             System.exit(0);
         }
-    
+
     }
-    private class klikTidak implements ActionListener{
+
+    private class klikTidak implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
             exit.dispose();
         }
-    
+
     }
-       
+
     private class aboutAction implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             vAbout.setVisible(true);
             vMenu.setVisible(false);
+        }
+
+    }
+
+    private class bantuanAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB1.setVisible(true);
+            vMenu.setVisible(false);
+        }
+
+    }
+
+    private class bantuan1CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB1.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+
+    private class bantuan2CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB2.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+
+    private class bantuan3CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB3.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+    private class bantuan4CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB4.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+    private class bantuan5CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB5.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+
+    private class bantuan1NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB1.setVisible(false);
+            vB2.setVisible(true);
+        }
+
+    }
+
+    private class bantuan2NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB2.setVisible(false);
+            vB3.setVisible(true);
+        }
+
+    }
+    private class bantuan3NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB3.setVisible(false);
+            vB4.setVisible(true);
+        }
+
+    }
+    private class bantuan4NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB4.setVisible(false);
+            vB5.setVisible(true);
+        }
+
+    }
+
+    private class bantuan2BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB2.setVisible(false);
+            vB1.setVisible(true);
+        }
+
+    }
+    private class bantuan3BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB3.setVisible(false);
+            vB2.setVisible(true);
+        }
+
+    }
+    private class bantuan4BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB4.setVisible(false);
+            vB3.setVisible(true);
+        }
+
+    }
+    private class bantuan5BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB5.setVisible(false);
+            vB4.setVisible(true);
         }
 
     }
@@ -102,7 +265,7 @@ public class c_menu {
             vAbout.setVisible(false);
             vMenu.setVisible(true);
         }
-        
+
     }
 
     private class batalActionLoad implements ActionListener {
@@ -171,7 +334,7 @@ public class c_menu {
 
     }
 
- private class mulaiAction implements ActionListener {
+    private class mulaiAction implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -180,7 +343,6 @@ public class c_menu {
         }
 
     }
-
 
     private class keluarAction implements ActionListener {
 
