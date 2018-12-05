@@ -686,7 +686,7 @@ public class c_sawah {
                     if (statusKotak[i] == 2) {
                         statusTime1[i] += 1;
                         System.out.println("1= " + statusTime1[i]);
-                        if (statusTime1[i] == 5) {
+                        if (statusTime1[i] == 5) {//5s notif air dari menanam
                             notif[i].setVisible(true);
                             notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/notif air.png")));
                             vlahan.bar_alatBahan().setVisible(true);
@@ -702,7 +702,7 @@ public class c_sawah {
                         System.out.println("2= " + statusTime2[i]);
                         if (statusTime2[i] == 2) {
                             notif[i].setVisible(false);
-                        } else if (statusTime2[i] == 10) {
+                        } else if (statusTime2[i] == 10) {//10+2 detik tumbuh ke 2 dari menyiram
                             ubahIcon(btnKotak[i], "/gambar/isisawah/jg2.png");
                             statusPenyakit[i] = penyakit[i];
                             System.out.println(statusPenyakit[i]);
@@ -723,7 +723,7 @@ public class c_sawah {
                     if (statusKotak[i] == 3 && statusPenyakit[i] == false) {
                         statusTime4[i] += 1;
                         System.out.println("4= " + statusTime4[i]);
-                        if (statusTime4[i] == 10) {
+                        if (statusTime4[i] == 10) {//10s notif pupuk dari tumbuh ke 2
                             notif[i].setVisible(true);
                             notif[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/isisawah/pupuk.png")));
                             vlahan.bar_alatBahan().setVisible(true);
@@ -740,21 +740,20 @@ public class c_sawah {
                         if (statusTime5[i] == 2) {
                             notif[i].setVisible(false);
                         } else if (statusTime5[i] == 5) {
-
                             statusKotak[i] = 4;
                         }
                     }
                     if (statusKotak[i] == 4) {
                         statusTime3[i] += 1;
                         System.out.println("3= " + statusTime3[i]);
-                        if (statusTime3[i] == 20) {
+                        if (statusTime3[i] == 20) {//20+5+2s siap panen dari memupuk
                             statusKotak[i] = 5;
                             ubahIcon(btnKotak[i], "/gambar/isisawah/jg3.png");
                         }
                     }
                     if (statusKotak[i] == 5) {
                         statusTime6[i] += 1;
-                        if(statusTime6 [i] == 20){
+                        if(statusTime6 [i] == 20){//20s membusuk pasca panen
                         statusKotak[i] = 6;
                         ubahIcon(btnKotak[i], "/gambar/isisawah/bosok.png");
                         notif[i].setVisible(true);

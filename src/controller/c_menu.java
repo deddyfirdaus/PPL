@@ -20,6 +20,10 @@ import v.bantuan2;
 import v.bantuan3;
 import v.bantuan4;
 import v.bantuan5;
+import v.bantuan6;
+import v.bantuan7;
+import v.bantuan8;
+import v.bantuan9;
 import v.createname;
 import v.framepilih;
 import v.keluargame;
@@ -33,6 +37,10 @@ public class c_menu {
     private bantuan3 vB3;
     private bantuan4 vB4;
     private bantuan5 vB5;
+    private bantuan6 vB6;
+    private bantuan7 vB7;
+    private bantuan8 vB8;
+    private bantuan9 vB9;
     private about vAbout;
     private keluargame exit;
     private createname cn;
@@ -52,6 +60,10 @@ public class c_menu {
         vB3 = new bantuan3();
         vB4 = new bantuan4();
         vB5 = new bantuan5();
+        vB6 = new bantuan6();
+        vB7 = new bantuan7();
+        vB8 = new bantuan8();
+        vB9 = new bantuan9();
         fp = new framepilih();
         cn = new createname();
         exit = new keluargame();
@@ -71,14 +83,26 @@ public class c_menu {
         vB3.getClose().addActionListener(new bantuan3CloseAction());
         vB4.getClose().addActionListener(new bantuan4CloseAction());
         vB5.getClose().addActionListener(new bantuan5CloseAction());
+        vB6.getClose().addActionListener(new bantuan6CloseAction());
+        vB7.getClose().addActionListener(new bantuan7CloseAction());
+        vB8.getClose().addActionListener(new bantuan8CloseAction());
+        vB9.getClose().addActionListener(new bantuan9CloseAction());
         vB1.getNext().addActionListener(new bantuan1NextAction());
         vB2.getNext().addActionListener(new bantuan2NextAction());
         vB3.getNext().addActionListener(new bantuan3NextAction());
         vB4.getNext().addActionListener(new bantuan4NextAction());
+        vB5.getNext().addActionListener(new bantuan5NextAction());
+        vB6.getNext().addActionListener(new bantuan6NextAction());
+        vB7.getNext().addActionListener(new bantuan7NextAction());
+        vB8.getNext().addActionListener(new bantuan8NextAction());
         vB2.getBack().addActionListener(new bantuan2BackAction());
         vB3.getBack().addActionListener(new bantuan3BackAction());
         vB4.getBack().addActionListener(new bantuan4BackAction());
         vB5.getBack().addActionListener(new bantuan5BackAction());
+        vB6.getBack().addActionListener(new bantuan6BackAction());
+        vB7.getBack().addActionListener(new bantuan7BackAction());
+        vB8.getBack().addActionListener(new bantuan8BackAction());
+        vB9.getBack().addActionListener(new bantuan9BackAction());
         vMenu.setVisible(true);
 
         exit.b_ya().addActionListener(new klikYa());
@@ -182,6 +206,42 @@ public class c_menu {
         }
 
     }
+    private class bantuan6CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB6.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+    private class bantuan7CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB7.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+    private class bantuan8CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB8.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
+    private class bantuan9CloseAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB9.setVisible(false);
+            vMenu.setVisible(true);
+        }
+
+    }
 
     private class bantuan1NextAction implements ActionListener {
 
@@ -220,6 +280,42 @@ public class c_menu {
         }
 
     }
+    private class bantuan5NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB5.setVisible(false);
+            vB6.setVisible(true);
+        }
+
+    }
+    private class bantuan6NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB6.setVisible(false);
+            vB7.setVisible(true);
+        }
+
+    }
+    private class bantuan7NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB7.setVisible(false);
+            vB8.setVisible(true);
+        }
+
+    }
+    private class bantuan8NextAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB8.setVisible(false);
+            vB9.setVisible(true);
+        }
+
+    }
 
     private class bantuan2BackAction implements ActionListener {
 
@@ -254,6 +350,42 @@ public class c_menu {
         public void actionPerformed(ActionEvent e) {
             vB5.setVisible(false);
             vB4.setVisible(true);
+        }
+
+    }
+    private class bantuan6BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB6.setVisible(false);
+            vB5.setVisible(true);
+        }
+
+    }
+    private class bantuan7BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB7.setVisible(false);
+            vB6.setVisible(true);
+        }
+
+    }
+    private class bantuan8BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB8.setVisible(false);
+            vB7.setVisible(true);
+        }
+
+    }
+    private class bantuan9BackAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vB9.setVisible(false);
+            vB8.setVisible(true);
         }
 
     }
